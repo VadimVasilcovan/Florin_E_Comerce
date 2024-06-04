@@ -1,0 +1,11 @@
+.response-icon {
+    width: 1.563rem;
+    height: auto;
+    margin-right: 0.5rem;
+  }
+  
+  .response-container {
+    display: flex;
+    align-items: center;
+    margin-left: 4rem;
+  }

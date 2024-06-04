@@ -1,0 +1,10 @@
+.verified-icon {
+    width: 1.563rem;
+    height: auto;
+    margin-right: 0.5rem;
+  }
+  
+  .verified-container {
+    display: flex;
+    align-items: center;
+  }

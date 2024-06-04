@@ -1,0 +1,12 @@
+.AFB-icon{
+    padding: 0px;
+    
+}
+
+.AFB-logo{
+    padding: 0px;
+    /*border: solid blue;*/
+    width: 20rem;
+    height: auto;
+    object-fit: contain; 
+}

@@ -1,0 +1,9 @@
+.phone-number-container{
+    display: flex;
+    align-items:center ;
+    padding: 0px;
+}
+
+.phone-number-container img {
+    margin-right: 10px; 
+  }

@@ -1,0 +1,33 @@
+.footer-container {
+  background-color: #0F121F;
+  height: 25rem;
+  width: 100%; /* Ensure footer extends full width of page */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-container span {
+  color: white;
+}
+
+.footer-info-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 2rem;
+  margin-bottom: 6rem;
+  width: 77.5rem;
+}
+
+.hr-footer {
+  width: 77.5rem; /* Ensure the <hr> spans the full width */
+  border: none; /* Remove any default border */
+  border-top: 1px solid white; /* Add a top border with white color */
+  margin: 0; /* Reset margin */
+}
+
+.footer-bottom {
+  padding-top: 1rem;
+  
+}

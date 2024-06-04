@@ -1,0 +1,21 @@
+.price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    height: 3rem;
+}
+
+.price >*:first-child {
+    margin-right: 0.5rem;
+}
+
+.price >*:last-child {
+    margin-left: 0.5rem;
+}
+
+.price h1 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}

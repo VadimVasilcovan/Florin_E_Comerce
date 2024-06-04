@@ -1,0 +1,20 @@
+.cars-card-holder-component {
+    border: 1px solid grey; /* Ensure the span takes only the space required by its content */
+    padding: 10px; /* Optional: add some padding to make the border more visible */
+    border-radius: 4px; /* Optional: add some border radius for rounded corners */
+    width: 21.875rem;
+    height: 31.25rem;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin-top: 4rem;
+    border-top: 4rem;
+}
+
+.cars-card-holder-component > *:first-child {
+    align-self: start;
+}
+
+.cars-card-holder-component > *:last-child {
+    align-self: end;
+    justify-self: end;
+}

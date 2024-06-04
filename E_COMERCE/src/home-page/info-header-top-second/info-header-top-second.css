@@ -1,0 +1,17 @@
+.info-Header-Top-Second{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 6rem;
+    align-items: center;
+}
+
+
+.info-Header-Top-Second >*:first-child{
+   margin-left: 10rem;
+
+}
+
+.info-Header-Top-Second >*:last-child{
+   margin-right: 10rem;
+}

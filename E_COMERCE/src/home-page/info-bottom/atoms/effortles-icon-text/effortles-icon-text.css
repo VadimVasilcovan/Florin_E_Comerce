@@ -1,0 +1,11 @@
+.effortles-icon {
+    width: 1.563rem;
+    height: auto;
+    margin-right: 0.5rem;
+  }
+  
+  .effortles-container {
+    display: flex;
+    align-items: center;
+    margin-left: 4rem;
+  }

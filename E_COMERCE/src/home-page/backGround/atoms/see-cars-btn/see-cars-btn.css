@@ -1,0 +1,33 @@
+
+    
+    /* CSS */
+    .see-cars-btn{
+      appearance: none;
+      background-color: #000000;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      border-radius: 6px;
+      box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+      box-sizing: border-box;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      padding: 8px 28px;
+      
+      
+      
+    }
+    .see-cars-btn:hover {
+      background-color: #2e2d2d;
+    }
+    .see-cars-btn:active {
+      background-color: #606361;
+      box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+    }
+    .see-cars-btn-div{
+        position: absolute;
+        margin-top: 250px;
+    }

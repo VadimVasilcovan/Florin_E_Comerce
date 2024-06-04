@@ -1,0 +1,7 @@
+.text-div p{
+    margin: 0%;
+}
+
+.text-div >*:last-child{
+    margin-bottom: 7rem;
+}

@@ -1,0 +1,8 @@
+.location-container {
+    display: flex;
+    align-items: center;
+}
+
+.location-container img {
+    margin-right: 10px;
+}

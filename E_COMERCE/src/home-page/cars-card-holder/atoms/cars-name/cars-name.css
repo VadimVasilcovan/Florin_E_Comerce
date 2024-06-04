@@ -1,0 +1,15 @@
+.carsNameh1{
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    display: inline-block;
+    text-align: start;  
+}
+
+.arrow-img{
+    border:solid;
+    border-color: black;
+}
+.CarNameComponents{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

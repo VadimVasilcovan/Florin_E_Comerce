@@ -1,0 +1,13 @@
+.backGroundimg {
+    width: 100vw;
+    height:23rem ;
+    display: block; /* Removes bottom margin/whitespace */
+    object-fit: cover;
+    
+  }
+  
+  .backGroundimgDiv {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    
+  }

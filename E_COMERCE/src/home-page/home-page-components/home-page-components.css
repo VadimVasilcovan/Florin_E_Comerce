@@ -1,0 +1,17 @@
+.page-div {
+    display: flex;
+    flex-direction: column; /* Ensure content is stacked vertically */
+    align-items: center; /* Center the home-page content */
+    width: 100%;
+}
+
+.home-page {
+    width: 77.5rem;
+}
+
+.background-img-div {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically if needed */
+    width: 100%; /* Ensure full width */
+}

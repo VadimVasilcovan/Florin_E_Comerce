@@ -1,0 +1,14 @@
+.background-txt {
+    width: 467px; /* Adjust width as needed */
+    height: 146px; /* Adjust height as needed */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: start; /* Center text horizontally */
+    position: absolute;
+    margin-top: 90px;
+
+  }
+  
+ 

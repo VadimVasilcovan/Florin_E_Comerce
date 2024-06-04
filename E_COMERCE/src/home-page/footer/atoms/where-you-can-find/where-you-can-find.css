@@ -1,0 +1,21 @@
+.location-icon{
+    width: 1.563rem;
+    height: auto;
+    margin-right: 0.5rem;
+  }
+  
+  
+
+  .location-icon-text-div{
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .location-container-footer{
+    width: 10rem;
+    flex-direction: column;
+    display: flex;
+  }
+
+ 

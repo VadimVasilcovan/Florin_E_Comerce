@@ -1,0 +1,17 @@
+.phone-icon {
+    width: 1.563rem;
+    height: auto;
+    margin-right: 0.5rem;
+  }
+  
+  
+
+  .phone-icon-text-div{
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .contact-us-container{
+    width: 10rem;
+  }

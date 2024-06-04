@@ -1,0 +1,5 @@
+.CarsPriceDiv{
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    display: inline-block;
+    text-align: start; 
+}

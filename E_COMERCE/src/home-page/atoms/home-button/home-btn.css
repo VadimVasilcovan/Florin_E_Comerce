@@ -1,0 +1,25 @@
+.home-btn {
+    background-color: white;
+    color: black;
+    border: none;
+    position: relative; /* Add this to ensure the pseudo-element positions correctly */
+    cursor: pointer;
+  }
+  
+  .home-btn:after {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #f22606; /* Change to black for visibility */
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+  
+  .home-btn:hover:after { 
+    width: 100%; 
+    left: 0; 
+  }

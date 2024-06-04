@@ -1,0 +1,23 @@
+.InfoHeaderTopCss {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    
+}
+
+.top-content {
+    display: flex;
+    align-items: center;
+   justify-content: space-between;
+}
+.right-side-elements{
+    display: flex;
+    flex-direction: row;
+}
+.right-side-elements>*:first-child{
+    margin-right: 2rem;
+}
+
+.hr-container {
+    margin:  0; /* Add margin for spacing */
+}
+

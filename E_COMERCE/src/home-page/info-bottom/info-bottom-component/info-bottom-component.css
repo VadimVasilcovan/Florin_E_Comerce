@@ -1,0 +1,5 @@
+.Info-Bottom-Components >*:last-child{
+    display: flex;
+    margin-bottom: 7rem;
+}
+
