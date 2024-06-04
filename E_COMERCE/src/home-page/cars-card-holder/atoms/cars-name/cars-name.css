@@ -6,7 +6,7 @@
 
 .arrow-img{
     border:solid;
-    border-color: black;
+    border-color: rgb(255, 1, 1);
 }
 .CarNameComponents{
     display: flex;
