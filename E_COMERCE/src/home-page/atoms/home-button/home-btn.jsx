@@ -1,8 +1,13 @@
 import React from 'react';
 import './home-btn.css'; 
+import { Link } from 'react-router-dom';
 
 function HomeBtn() {
-  return <button className="home-btn">Home</button>;
+  return (
+    <Link to="/" className="home-btn">
+      Home
+    </Link>
+  );
 }
 
 export default HomeBtn;

@@ -1,8 +1,9 @@
 import React from 'react';
 import './cars-btn.css'; 
+import {Link} from 'react-router-dom' 
 
 function CarsBtn() {
-  return <button className="cars-btn">Cars</button>;
+  return <Link to="/cars" className="cars-btn">Cars</Link>;
 }
 
 export default CarsBtn;

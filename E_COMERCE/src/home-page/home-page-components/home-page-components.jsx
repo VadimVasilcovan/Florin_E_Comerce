@@ -6,14 +6,14 @@ import BackGroundComponents from '../backGround/backGround-component/backGround-
 import CarsCardHolderComponent from '../cars-card-holder/cars-card-holder-component/cars-card-holder-component';
 import InfoBottomComponent from '../info-bottom/info-bottom-component/info-bottom-component';
 import FooterComponent from '../footer/footer-component/footer-component';
+import NavbarComponent from '../../navbar/navbar';
 
 
 function HomePage() {
     return (
         <div className="page-div">
             <div className="home-page">
-                <InfoHeaderTop />
-                <InfoHeaderTopSecond />
+                
                 </div>
                 <div className='background-img-div'>
                 <BackGroundComponents />
