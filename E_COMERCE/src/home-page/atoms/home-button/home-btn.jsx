@@ -1,12 +1,12 @@
 import React from 'react';
 import './home-btn.css'; 
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function HomeBtn() {
   return (
-    <Link to="/" className="home-btn">
+    <NavLink to="/" className={({ isActive }) => isActive ? "home-btn active" : "home-btn"}>
       Home
-    </Link>
+    </NavLink>
   );
 }
 

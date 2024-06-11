@@ -3,6 +3,7 @@
     flex-direction: column; /* Ensure content is stacked vertically */
     align-items: center; /* Center the home-page content */
     width: 100%;
+   
 }
 
 .home-page {

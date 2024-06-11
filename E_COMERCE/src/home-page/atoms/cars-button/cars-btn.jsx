@@ -1,9 +1,13 @@
 import React from 'react';
 import './cars-btn.css'; 
-import {Link} from 'react-router-dom' 
+import { NavLink } from 'react-router-dom';
 
 function CarsBtn() {
-  return <Link to="/cars" className="cars-btn">Cars</Link>;
+  return (
+    <NavLink to="/cars" className={({ isActive }) => isActive ? "cars-btn active" : "cars-btn"}>
+      Cars
+    </NavLink>
+  );
 }
 
 export default CarsBtn;
