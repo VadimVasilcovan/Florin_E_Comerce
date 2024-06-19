@@ -13,9 +13,7 @@
     font-weight: 600;
     line-height: 20px;
     padding: 8px 28px;
-    
-    
-    
+    border-style: solid;
   }
   .details-btn:hover {
     background-color: #2e2d2d;

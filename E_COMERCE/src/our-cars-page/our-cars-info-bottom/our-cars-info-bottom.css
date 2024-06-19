@@ -1,5 +1,23 @@
-.contact-us-button{
-  appearance: none;
+.our-cars-info-bottom-div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.our-cars-info-bottom-container{
+    display: flex;
+    flex-direction: column;
+    width: 15.50rem;
+   text-align: center;
+}
+
+.custom-hr {
+    width: 77.5rem;
+}
+
+
+.our-cars-info-bottom-button{
+    appearance: none;
   background-color: #ffffff;
   border-color: #000000;
   border-radius: 6px;
@@ -13,18 +31,16 @@
   font-size: 14px;
   font-weight: 600;
   padding: 8px 28px;
-  margin-left: 1rem;  
-  }
-  .contact-us-button:hover {
+
+}
+
+.our-cars-info-bottom-button:hover {
     background-color: #000000;
     color:  #ffffff;
   }
-  .contact-us-button:active {
+  .our-cars-info-bottom-button:active {
     background-color: #606361;
     border-color:#606361;;
     box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
   }
-  .contact-us-button{
-      position: absolute;
-      
-  }
+  

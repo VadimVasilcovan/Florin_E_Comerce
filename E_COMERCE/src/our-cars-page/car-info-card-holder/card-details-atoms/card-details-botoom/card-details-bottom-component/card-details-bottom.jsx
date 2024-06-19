@@ -9,10 +9,12 @@ function CardDetailsBottom(){
     return <div className="car-details-bottom-div">
         <div>
             <PanoramicSunroof/>
+            <span> / </span>
             <Lights/>
         </div>
         <div>
             <WheelsSize/>
+            <span> / </span>
             <Edition/>
         </div>
     </div>

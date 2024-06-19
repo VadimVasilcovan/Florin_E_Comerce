@@ -10,18 +10,14 @@ function CarDetailsTop(){
     return<div>
         <div>
             <Mileage/>
-            <span>\</span>
+            <span> / </span>
             <HorsePower/>
         </div>
         <div>
             <Transmision/>
-            <span>
-                \
-            </span>
+            <span> / </span>
             <Fuel/>
-            <span>
-                \
-            </span>
+            <span> / </span>
             <Displacement/>
         </div>
     </div>

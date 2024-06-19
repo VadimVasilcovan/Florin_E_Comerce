@@ -4,7 +4,8 @@
     border: 1px solid grey;
    display: flex;
    flex-direction: row;
-   border-radius: 1rem;
+   border-radius: 0.5rem;
+   margin-top: 2.5rem;
 }
 
 .img-holder {

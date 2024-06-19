@@ -7,7 +7,7 @@
     display: grid;
     grid-template-rows: 1fr 1fr;
     margin-top: 4rem;
-    border-top: 4rem;
+    
     background-color: white;
 }
 

@@ -1,0 +1,28 @@
+.delete-btn-filters{
+    margin-top: 2rem;
+    appearance: none;
+    background-color: #ffffff;
+    border-color: #000000;
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box; /* Ensures the border is inside the button's dimensions */
+    color: #000000;
+    cursor: pointer;
+    border-style: solid;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 1rem 28px;
+    
+}
+
+    .delete-btn-filters:hover {
+      background-color: #000000;
+      color:  #ffffff;
+    }
+    .delete-btn-filters:active {
+      background-color: #606361;
+      border-color:#606361;;
+      box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+    }
+   

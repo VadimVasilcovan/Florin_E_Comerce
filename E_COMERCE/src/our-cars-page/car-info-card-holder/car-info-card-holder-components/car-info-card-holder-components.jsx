@@ -11,6 +11,7 @@ import PriceCarCardHolder from '../atoms/price/price';
 import DetailsBtn from '../atoms/details-button/details-button';
 import ContactUsBtn from '../atoms/contact-button/contact-button';
 import CardDetailsBottom from '../card-details-atoms/card-details-botoom/card-details-bottom-component/card-details-bottom';
+import Manufacturer from '../../select-menu/atoms/manufacturer-select/manufacturer-select';
 
 
 function CarCardHolder() {
@@ -30,7 +31,7 @@ function CarCardHolder() {
                 <CarDetailsTop/>
                 <IsHybrid/>
                 <PriceCarCardHolder/>
-                <div>
+                <div className='car-card-holder-buttons-div'>
                 <DetailsBtn/>
                 <ContactUsBtn/>
                 </div>
@@ -38,7 +39,10 @@ function CarCardHolder() {
                 <CardDetailsBottom/>
                 </div>
             </div>
+            
         </div>
+       
+       
     );
 }
 

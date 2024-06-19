@@ -1,0 +1,18 @@
+.our-cars-div{
+    display: flex;
+    flex-direction: column; /* Ensure content is stacked vertically */
+    align-items: center; /* Center the home-page content */
+    width: 100%;
+}
+
+.our-cars-page{
+    width: 77.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.tittile-div{
+    width: 77.5rem;
+}
