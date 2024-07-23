@@ -1,9 +1,9 @@
 import React from "react";
 import './horse-power.css'
 
-function HorsePower(){
+function HorsePower({car}){
     return<span>
-        Horse Power
+        {car.power}HP
     </span>
 }
 export default HorsePower;

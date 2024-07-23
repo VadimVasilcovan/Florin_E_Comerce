@@ -1,9 +1,9 @@
 import React from "react";
 import './transmision.css'
 
-function Transmision(){
+function Transmision({car}){
     return<span>
-        Transmision
+        {car.transmission}
     </span>
 }
 export default Transmision;

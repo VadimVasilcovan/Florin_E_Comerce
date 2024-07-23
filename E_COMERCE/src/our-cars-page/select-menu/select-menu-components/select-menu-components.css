@@ -6,10 +6,9 @@
 .selection-menu-container-div{
     display: flex;
     flex-direction: column;
-   border-style: solid;
    padding-left: 1rem;
    padding-right: 1rem;
    padding-bottom: 2rem;
    border-radius: 0.5rem;
-   border: 1px solid grey;
+   background-color: white;
 }

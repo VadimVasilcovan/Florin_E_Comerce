@@ -1,21 +1,67 @@
 .cars-card-holder-component {
-    border: 1px solid grey; /* Ensure the span takes only the space required by its content */
-    padding: 10px; /* Optional: add some padding to make the border more visible */
-    border-radius: 4px; /* Optional: add some border radius for rounded corners */
-    width: 21.875rem;
-    height: 31.25rem;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    align-items: center;
+    justify-content: space-between;
     margin-top: 4rem;
     
-    background-color: white;
 }
 
-.cars-card-holder-component > *:first-child {
-    align-self: start;
+.cars-card-holder-component > * {
+    flex: 1 0 300px; /* or use min-width: 300px; if you prefer */
+    max-width: calc(50% - 20px); /* To achieve similar behavior as auto-fit with grid */
 }
 
-.cars-card-holder-component > *:last-child {
-    align-self: end;
-    justify-self: end;
+.car-card {
+    height: 32rem;
+    position: relative; /* Ensure the card is a positioned container */
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+    margin-bottom: 0rem;
+    box-sizing: border-box; 
+    
+   
+}
+
+.main-picture {
+    width: 100%;
+    height: 100%;
+    display: block; /* Removes bottom margin/whitespace */
+    object-fit: cover; /* Maintain aspect ratio while fitting inside the container */
+    border-radius: 0.6rem;
+}
+
+.car-price {
+    font-weight: bold;
+    position: absolute;
+    bottom: 5px; /* Adjust as needed */
+    left: 5px; /* Adjust as needed - now on the left side */
+     /* Optional: Add a background color for readability */
+    padding: 5px; /* Optional: Add padding for better visual appearance */
+    color: white;
+}
+
+.car-name-model-div {
+    position: absolute;
+    top: 5px; /* Adjust as needed */
+    left: 5px; /* Adjust as needed */
+    right: 5px;
+    color: white;
+}
+
+.car-name, .car-model {
+    font-weight: bold;
+    margin-top: 5px; /* Add spacing between car name and top edge */
+    display: inline-block;
+}
+
+.car-name {
+    color: white;
+}
+
+.car-model {
+    color: white;
+    margin-left: 10px; /* Adjust as needed for spacing between manufacturer and model */
 }

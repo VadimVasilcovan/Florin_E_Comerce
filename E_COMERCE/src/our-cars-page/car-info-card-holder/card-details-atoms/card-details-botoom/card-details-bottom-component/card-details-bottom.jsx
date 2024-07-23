@@ -8,7 +8,7 @@ import Edition from "../edition/edition";
 function CardDetailsBottom(){
     return <div className="car-details-bottom-div">
         <div>
-            <PanoramicSunroof/>
+            <PanoramicSunroof />
             <span> / </span>
             <Lights/>
         </div>

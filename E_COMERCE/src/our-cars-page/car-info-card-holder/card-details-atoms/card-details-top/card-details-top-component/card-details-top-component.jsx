@@ -6,19 +6,19 @@ import Transmision from "../transmission/transmision";
 import Fuel from "../fuel/fuel";
 import Displacement from "../displacement/displacement";
 
-function CarDetailsTop(){
+function CarDetailsTop({car}){
     return<div>
         <div>
-            <Mileage/>
+            <Mileage car={car}/>
             <span> / </span>
-            <HorsePower/>
+            <HorsePower car={car}/>
         </div>
         <div>
-            <Transmision/>
+            <Transmision car={car}/>
             <span> / </span>
-            <Fuel/>
+            <Fuel car={car}/>
             <span> / </span>
-            <Displacement/>
+            <Displacement car={car}/>
         </div>
     </div>
 }

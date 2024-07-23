@@ -1,9 +1,9 @@
 import React from "react";
 import './displacement.css'
 
-function Displacement(){
+function Displacement({car}){
     return<span>
-        Displacement
+        {car.displacement}cm3
     </span>
 }
 export default Displacement;

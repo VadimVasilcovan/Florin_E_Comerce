@@ -1,9 +1,9 @@
 import React from "react";
 import './fuel.css'
 
-function Fuel(){
+function Fuel({car}){
     return<span>
-        Fuel
+        {car.fuel}
     </span>
 }
 

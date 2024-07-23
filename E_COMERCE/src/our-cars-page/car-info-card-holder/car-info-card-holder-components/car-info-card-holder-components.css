@@ -1,19 +1,18 @@
 .car-card-holder-component {
     width: 51.50rem;
     height: 27.50rem;
-    border: 1px solid grey;
    display: flex;
    flex-direction: row;
    border-radius: 0.5rem;
    margin-top: 2.5rem;
+   background-color: white;
 }
 
 .img-holder {
     display: flex;
     flex-direction: column;
-    border-right: solid;
     width: 24rem;
-    border-right: 1px solid red;
+    
 }
 
 .secondary-img {

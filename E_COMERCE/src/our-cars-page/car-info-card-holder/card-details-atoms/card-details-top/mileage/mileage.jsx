@@ -1,9 +1,9 @@
 import React from "react";
 import './mileage.css'
 
-function Mileage(){
+function Mileage({car}){
     return<span>
-        Mileage
+        {car.mileage}km
     </span>
 }
 export default Mileage

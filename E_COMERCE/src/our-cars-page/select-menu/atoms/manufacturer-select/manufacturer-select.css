@@ -17,5 +17,11 @@
 .select-element-manufacturer:focus {
     border-color: #D8513F;
     outline: none;
+    border-radius: 0px;
 }
+
+.select-items{
+    border-radius: 0px;
+}
+
 
