@@ -1,0 +1,15 @@
+.price-and-publish{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.admin-price-div {
+    width: 77.5rem;
+}
+
+.admin-publish-div{
+    width: 77.5rem;
+}

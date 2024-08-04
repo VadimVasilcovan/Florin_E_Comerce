@@ -1,0 +1,43 @@
+.main-details-div-parent{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-details-div{
+    width: 77.5rem;
+}
+
+.details-aligment-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.details-aligment-second{
+    width: 75%;
+}
+
+.details-aligment-div-second {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-top: 1rem;
+}
+
+input {
+    width: 15rem;
+    flex-grow: 1;
+}
+
+.vin-number-registration-div{
+    display: flex;
+    align-items: row;
+}
+
+.input-vin-number-div{
+   width: 34.5rem;
+   flex-grow: 1;
+}
+

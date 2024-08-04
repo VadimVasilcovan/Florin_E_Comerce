@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import './manufacturer-select.css'
 
 
-function Manufacturer(){
+function Manufacturer({car}){
      
     const [value, setValue] = useState('default'); // default value for the placeholder
 

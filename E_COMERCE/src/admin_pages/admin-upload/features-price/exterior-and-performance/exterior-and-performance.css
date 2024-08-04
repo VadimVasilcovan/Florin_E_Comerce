@@ -1,0 +1,58 @@
+.main-features-div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+
+
+.secondary-features-div{
+    width: 77.5rem;
+}
+.additional-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+
+
+.additional-info-p{
+    margin-right: 1rem;
+    background-color: black;
+    color: white;
+    border-radius: 0.25rem;
+    padding-left: 0.25rem;
+    
+}
+
+
+.additional-info-delete-btn{
+    margin-left: 0.25rem;
+    background-color: white;
+    border: solid 0.1rem;
+    border-left: none;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    
+    
+    
+}
+
+input{
+    margin-right: 1rem;
+}
+
+.add-button{
+    background-color: black;
+    color: white;
+    border: solid, black;
+    border-radius: 0.25rem;
+    border: 0.1rem;
+    width: 2rem;
+    height: 2rem;
+    /*width, height, temporary*/
+}

@@ -1,0 +1,37 @@
+import { useState } from "react";
+import './interior-and-comfort.css';
+
+function InteriorAndComfort (){
+    const [inputValue, setInputValue] = useState("");
+    const [values, setValues] = useState([]);
+
+    const handleButtonClick = () => {
+        if (inputValue.trim() !== "") {
+            setValues([...values, inputValue]);
+            setInputValue("");
+        }
+    };
+    return(
+    <div className="main-features-div">
+        <div className="secondary-features-div">
+            <span>Interior & comfort</span>
+            <div >
+                <input
+                    type="text"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                />
+                <button className="add-button" onClick={handleButtonClick}>+</button>
+            </div>
+            <div className="additional-info">
+                {values.map((value, index) => (
+                    <p className="additional-info-p" key={index}>{value}<button className="additional-info-delete-btn">Delete</button></p>
+                ))}
+                
+            </div>
+        </div>
+    </div>
+    );
+}
+
+export default InteriorAndComfort;

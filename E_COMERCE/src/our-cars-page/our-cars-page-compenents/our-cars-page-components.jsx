@@ -7,7 +7,7 @@ import OurCarsTitle from "../our-cars-tittle/our-cars-tittle-component";
 import OurCarsInfoBottom from "../our-cars-info-bottom/our-cars-info-bottom";
 import OurCarsPagination from "../our-cars-pagination/our-cars-pagination";
 
-function OurCarsPage({ cars }) {
+function OurCarsPage({ cars } ) {
     return (
         <div className="our-cars-div">
             <div className="tittile-div">
@@ -15,6 +15,7 @@ function OurCarsPage({ cars }) {
             </div>
             <div className="our-cars-page">
                 <div>
+                    
                     <SelectMenu />
                 </div>
                 <div>

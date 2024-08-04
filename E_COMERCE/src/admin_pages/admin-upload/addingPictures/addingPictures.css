@@ -1,0 +1,52 @@
+.adding-pictures-div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.div-info-top-img{
+    width: 77.5rem;
+
+}
+
+.img-admin-upload-div{
+    display: flex;
+    flex-direction: row;
+    
+    border-color:#EEEFF2 ;
+    width: 100%;
+}
+.img-admin-upload-div {
+    display: flex;
+    width: 100%;
+    
+    box-sizing: border-box;
+}
+
+.main-img-upload {
+    border: solid 1px #EEEFF2;
+    width: 50%;
+    height: 38rem;
+    background-color: white;
+}
+
+.secondary-img-upload-div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 50%;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.secondary-img-upload {
+    border: solid 1px #EEEFF2;
+    border-bottom: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main-picture-btn {
+    margin-top: 1rem;
+}
