@@ -12,26 +12,32 @@ function ExteriorAndPerformance() {
         }
     };
 
+    const handleDelete = (indexToDelete) => {
+        setValues(values.filter((_, index) => index !== indexToDelete));
+    };
+
     return (
         <div className="main-features-div">
             <div className="secondary-features-div">   
-            <h1>3: Features</h1>
-            <hr />
-            <span>Exterior & performance</span>
-            <div >
-                <input
-                    type="text"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                />
-                <button className="add-button" onClick={handleButtonClick}>+</button>
-            </div>
-            <div className="additional-info">
-                {values.map((value, index) => (
-                    <p className="additional-info-p" key={index}>{value}<button className="additional-info-delete-btn">Delete</button></p>
-                ))}
-                
-            </div>
+                <h1>3: Features</h1>
+                <hr />
+                <span>Exterior & performance</span>
+                <div>
+                    <input
+                        type="text"
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                    />
+                    <button className="add-button" onClick={handleButtonClick}>+</button>
+                </div>
+                <div className="additional-info">
+                    {values.map((value, index) => (
+                        <p className="additional-info-p" key={index}>
+                            {value}
+                            <button className="additional-info-delete-btn" onClick={() => handleDelete(index)}>Delete</button>
+                        </p>
+                    ))}
+                </div>
             </div>
         </div>
     );
