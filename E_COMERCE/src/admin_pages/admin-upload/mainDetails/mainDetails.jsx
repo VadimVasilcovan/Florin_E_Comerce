@@ -15,6 +15,43 @@ function MainDetails() {
     const [seatsNumber, setSeatsNumber] = useState("");
     const [bodyColor, setBodyColor] = useState("");
     const [interiorColor, setInteriorColor] = useState("");
+    const [vinNumber, setVinNumber] = useState("");
+    const [firstRegistration, setFirstRegistration] = useState("");
+
+    const handleSubmit = () => {
+        const carDetails = {
+            carManufacturer,
+            carModel,
+            productionYear,
+            mileage,
+            fuel,
+            displacement,
+            power,
+            bodyType,
+            transmission,
+            doorsNumber,
+            seatsNumber,
+            bodyColor,
+            interiorColor,
+            vinNumber,
+            firstRegistration,
+        };
+
+        fetch("https://example.com/api/cars", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(carDetails),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Success:", data);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    };
 
     return (
         <div className="main-details-div-parent">
@@ -58,50 +95,47 @@ function MainDetails() {
                         <input value={bodyType} onChange={(e) => setBodyType(e.target.value)} />
                     </div>
                 </div>
-                    <div className="details-aligment-second">
-                <div className="details-aligment-div">
-                    <div className="details-aligment-div-second">
-                        <span>Transmission</span>
-                        <input value={transmission} onChange={(e) => setTransmission(e.target.value)} />
+                
+                    <div className="details-aligment-div">
+                        <div className="details-aligment-div-second">
+                            <span>Transmission</span>
+                            <input value={transmission} onChange={(e) => setTransmission(e.target.value)} />
+                        </div>
+                        <div className="details-aligment-div-second">
+                            <span>Doors number</span>
+                            <input type="number" value={doorsNumber} onChange={(e) => setDoorsNumber(Number(e.target.value))} />
+                        </div>
+                        <div className="details-aligment-div-second">
+                            <span>Seats number</span>
+                            <input type="number" value={seatsNumber} onChange={(e) => setSeatsNumber(Number(e.target.value))} />
+                        </div>
+                        <div className="details-aligment-div-second">
+                            <span>Interior color</span>
+                            <input value={interiorColor} onChange={(e) => setInteriorColor(e.target.value)} />
+                        </div>
                     </div>
-                    <div className="details-aligment-div-second">
-                        <span>Doors number</span>
-                        <input value={doorsNumber} onChange={(e) => setDoorsNumber(e.target.value)} />
-                    </div>
-                    <div className="details-aligment-div-second">
-                        <span>Seats number</span>
-                        <input value={seatsNumber} onChange={(e) => setSeatsNumber(e.target.value)} />
-                    </div>
-                </div>
 
-                <div className="details-aligment-div">
-                    <div className="details-aligment-div-second">
-                        <span>Seats number</span>
-                        <input value={seatsNumber} onChange={(e) => setSeatsNumber(e.target.value)} />
-                    </div>
-                    <div className="details-aligment-div-second">
-                        <span>Body color</span>
-                        <input value={bodyColor} onChange={(e) => setBodyColor(e.target.value)} />
-                    </div>
-                    <div className="details-aligment-div-second">
-                        <span>Interior color</span>
-                        <input value={interiorColor} onChange={(e) => setInteriorColor(e.target.value)} />
-                    </div>
-                </div>
-
-
-                <div className="vin-number-registration-div">
-                    <div className="details-aligment-div-second">
-                        <span >Vin number</span>
-                        <input className="input-vin-number-div" value={transmission} onChange={(e) => setTransmission(e.target.value)} />
-                    </div>
-                    <div className="details-aligment-div-second">
-                        <span>First Registration</span>
-                        <input value={doorsNumber} onChange={(e) => setDoorsNumber(e.target.value)} />
-                    </div>
+                    <div className="details-aligment-div">
+                        <div className="details-aligment-div-second">
+                            <span>Body color</span>
+                            <input value={bodyColor} onChange={(e) => setBodyColor(e.target.value)} />
+                        </div>
+                        
                     
+                        <div className="details-aligment-second">
+                    <div className="vin-number-registration-div">
+                        <div className="details-aligment-div-second">
+                            <span>Vin number</span>
+                            <input className="input-vin-number-div" value={vinNumber} onChange={(e) => setVinNumber(e.target.value)} />
+                        </div>
+                        <div className="details-aligment-div-second">
+                            <span>First Registration</span>
+                            <input type="date" value={firstRegistration} onChange={(e) => setFirstRegistration(e.target.value)} />
+                        </div>
+                    </div>
                 </div>
                 </div>
+                <button onClick={handleSubmit}>Submit</button>
             </div>
         </div>
     );

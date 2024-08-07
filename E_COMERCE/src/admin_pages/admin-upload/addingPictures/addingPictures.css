@@ -23,11 +23,19 @@
     box-sizing: border-box;
 }
 
-.main-img-upload {
+.main-img-upload-div{
     border: solid 1px #EEEFF2;
     width: 50%;
     height: 38rem;
     background-color: white;
+    
+}
+
+.main-img-upload{
+    
+    width: 100%;
+    height: 38rem;
+    object-fit: cover;
 }
 
 .secondary-img-upload-div {
@@ -37,16 +45,24 @@
     width: 50%;
     box-sizing: border-box;
     background-color: white;
+    height: 38rem;
+    
 }
 
 .secondary-img-upload {
     border: solid 1px #EEEFF2;
     border-bottom: none;
     width: 100%;
-    height: 100%;
+    height: 19rem;
     object-fit: cover;
+    
 }
 
 .main-picture-btn {
     margin-top: 1rem;
+}
+
+.upload-pictures-btn{
+    margin-bottom: 1rem;
+    margin-right: 1rem;
 }
