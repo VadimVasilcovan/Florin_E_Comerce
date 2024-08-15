@@ -6,9 +6,11 @@ import SelectMenu from "../select-menu/select-menu-components/select-menu-compon
 import OurCarsTitle from "../our-cars-tittle/our-cars-tittle-component";
 import OurCarsInfoBottom from "../our-cars-info-bottom/our-cars-info-bottom";
 import OurCarsPagination from "../our-cars-pagination/our-cars-pagination";
+import FooterComponent from "../../home-page/footer/footer-component/footer-component";
 
 function OurCarsPage({ cars } ) {
     return (
+        <div>
         <div className="our-cars-div">
             <div className="tittile-div">
                 <OurCarsTitle />
@@ -28,6 +30,8 @@ function OurCarsPage({ cars } ) {
                 </div>
             </div>
             <OurCarsInfoBottom />
+        </div>
+        <FooterComponent/>
         </div>
     );
 }

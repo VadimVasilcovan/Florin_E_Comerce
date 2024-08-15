@@ -1,5 +1,6 @@
 import React from 'react';
 import './car-info-card-holder-components.css';
+
 import MainImg from '../atoms/main-img/main-img';
 import SecondaryImg from '../atoms/secondary-img/secondary-img';
 import CarNameInfoHolder from '../atoms/car-name/car-name';
@@ -11,7 +12,9 @@ import DetailsBtn from '../atoms/details-button/details-button';
 import ContactUsBtn from '../atoms/contact-button/contact-button';
 import CardDetailsBottom from '../card-details-atoms/card-details-botoom/card-details-bottom-component/card-details-bottom';
 
+
 function CarCardHolder({ car }) {
+  console.log(car);
   const secondaryImages = car.pictures.others.slice(0, 3); // Get the first 3 images
   while (secondaryImages.length < 3) {
     secondaryImages.push(null); // Add null placeholders until we have 3 elements
@@ -34,13 +37,14 @@ function CarCardHolder({ car }) {
         <IsHybrid />
         <PriceCarCardHolder car={car} />
         <div className='car-card-holder-buttons-div'>
-          <DetailsBtn />
+          <DetailsBtn car={car} />
           <ContactUsBtn />
         </div>
         <CardDetailsBottom car={car}/>
       </div>
+      
     </div>
   );
 }
 
-export default CarCardHolder; //cista pentru update in github 
+export default CarCardHolder;

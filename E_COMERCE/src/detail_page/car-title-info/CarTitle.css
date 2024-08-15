@@ -1,0 +1,123 @@
+.div-father{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+    width:77.5rem;
+}
+.boxes{
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    
+    margin-top: 4rem;
+}
+.boxes div{
+    border-bottom: 1px solid black ;
+    width: 14rem;
+}
+.boxes h1{
+    font-weight: 300;
+    font-size: 20px;
+    color: #757575;
+}
+.boxes p{
+    font-weight: 400;
+    font-size: 20px;
+}
+.first-two{
+    display: flex;
+    flex-direction: column;
+}
+.div-mother{
+    display: flex;
+    margin-bottom: 5rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+    font-family:"IBM Plex Sans", sans-serif;
+    
+}
+.price-box{
+    border: 1px solid black;
+    border-radius:7px ;
+    width: 23rem;
+    height: 32rem;
+    margin-top:5.938rem;
+   
+    margin-left: 3rem;
+}
+.price-box h1{
+    font-weight: 400;
+    font-size: 40px;
+    margin-top: 1.2rem;
+    margin-left: 1.2rem;
+    margin-bottom: 0px;
+}
+.price-box button{
+    width:19rem ;
+    height:3.75rem;
+    border-radius: 5px;
+    margin-left: 1.2rem;
+    margin-top: 1.2rem;
+    cursor: pointer; 
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 400;
+    font-size: 20px;
+}
+.order-now{
+    background-color: #0F121F;
+    color: white;
+    border: none;
+}
+.order-now:hover {
+    background-color: #1C1F2C; 
+    transform: scale(1.01);
+}
+.share:hover {
+    background-color: #e3e3e3; 
+    transform: scale(1.01);
+}
+.chat-whatsapp:hover {
+    background-color: #e3e3e3; 
+    transform: scale(1.01);
+}
+.p1{
+    font-weight: 300;
+    font-size: 15px;
+    margin-left: 1.2rem;
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+}
+.big-title{
+    
+    margin-top:5.938rem;
+}
+.big-title h1{
+
+    font-weight: 400;
+    font-size: 40px;
+}
+.big-title p{
+
+    font-weight: 300;
+    font-size: 20px;
+    color:#757575 ;
+
+}
+.p2{
+    margin-left: 1.2rem;
+    margin-top: 1.2rem;
+    font-weight: 400;
+    font-size: 20px;
+}
+.p3{
+    margin-left: 1.2rem;
+    margin-top: 1.2rem;
+    color: #757575;
+    font-weight: 300;
+    font-size: 20px;
+}

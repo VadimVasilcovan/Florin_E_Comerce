@@ -1,0 +1,23 @@
+.Need-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 10.5rem;
+    border: 1px solid black;
+    margin-top: 6rem;
+}
+.Need-div p{
+    font-weight: 400;
+    font-size: 40px;
+    margin-top: 1rem;
+}
+.Need-div button{
+    width: 18.125rem;
+    height:3.75rem ;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-top: 1rem;
+    margin-bottom: 1.2rem;
+} 
