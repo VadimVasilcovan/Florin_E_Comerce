@@ -2,14 +2,30 @@
     width: 1.563rem;
     height: auto;
     margin-right: 0.5rem;
+    text-decoration: none;
+    color: white;
   }
-  
-  
+  .anchor{
+    text-decoration: none;
+    color: white;
+    
+  }
+ .spanu{
+  display: flex;
+  align-items: center;
+ }
+  .spanu :hover{
+    text-decoration: underline;
+  }
+ 
 
   .connect-with-div{
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-top: 1rem;
+    text-decoration: none;
+    color: white;
   }
 
  

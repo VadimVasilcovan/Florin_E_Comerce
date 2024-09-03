@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+
 }
 
 .our-cars-info-bottom-container{
@@ -9,6 +10,8 @@
     flex-direction: column;
     width: 15.50rem;
    text-align: center;
+   
+   margin-bottom: 2rem;
 }
 
 .custom-hr {

@@ -7,9 +7,11 @@ function ConnectWithAfb(){
     return <div className="connect-with-container">
         <span>Connect with AFB</span>
         <div className="connect-with-div">
-        <img className="instagram-icon" src={instagram} alt='instagram-icon'/>
-            <span>
-            @afbcars
+        
+            <span className="spanu">
+                <img className="instagram-icon" src={instagram} alt='instagram-icon'/>
+                <a target="_blank" className="anchor" href="https://www.instagram.com/afbcars/?utm_source=ig_web_button_share_sheet"> @afbcars</a>
+           
             </span>
         </div>
     </div>

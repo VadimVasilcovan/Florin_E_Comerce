@@ -4,8 +4,15 @@
     margin-right: 0.5rem;
   }
   
-  
+  .ancora{
+    text-decoration: none;
+    color: white;
+  }
 
+.spaniel :hover{
+  text-decoration: underline;
+  color: white;
+}
   .phone-icon-text-div{
     display: flex;
     align-items: center;
