@@ -17,6 +17,7 @@ function FooterComponent(){
             <div className='footer-bottom'>
                 <TextFooterBottom />
             </div>
+            
         </div>
     );
 }

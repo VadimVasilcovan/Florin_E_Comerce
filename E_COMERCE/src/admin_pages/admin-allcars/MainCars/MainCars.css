@@ -1,18 +1,53 @@
+
+.MainCarsall-div{
+    background-color: #EEEFF2;
+    width: 77.5rem;
+}
 .main-cars {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Create 3 equal-width columns */
-    gap: 20px; /* Add space between the cards */
-    padding: 20px;
+    grid-template-columns: repeat(2, 0.2fr);
+    gap: 2.5rem; 
+    background-color: #EEEFF2;
+    
 }
 
 .card-masina {
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    transition: transform 0.3s ease;
+    padding-bottom: 2rem;
 }
 
-.card-masina:hover {
-    transform: translateY(-10px);
+.adminall-title{
+    background-color: #EEEFF2;
+    margin-bottom: 5rem;
+}
+.adminall-title h1{
+    font-weight: 400;
+    font-size: 2.5rem ;
+    padding-top: 2rem;
+}
+.adminall-title button {
+    
+    width: 17.125rem;
+    height: 3.75rem;
+    margin-top: 0.5rem;
+    background-color: #0F121F;
+    color: #FFFFFF;
+    font-size: 1.25rem;
+    font-weight: 400;
+    border-radius: 6px;
+    border: none; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+.adminall-title button:hover {
+    background-color: #1C2233; 
+  
+}
+
+.adminall-title button:active {
+    background-color: #0A0D1A; 
+    transform: translateY(2px); 
 }

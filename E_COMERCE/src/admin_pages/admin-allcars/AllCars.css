@@ -1,8 +1,26 @@
 .HeaderLogo{
     display: flex;
     justify-content: start;
-    padding-left: 6.188rem;
     padding-top: 1.563rem;
     padding-bottom:1.563rem ;
     border-bottom: 1px solid black;
+}
+.AllCars-big-div{
+    background-color: #EEEFF2;
+}
+.MainCarsall-bigdiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer-admin-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0F121F;
+    height: 15rem;
+    width:100%;
+}
+.footer-admin-div img{
+    color: #FFFF;
 }

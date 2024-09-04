@@ -19,8 +19,10 @@ function CardMasina({ car, onClick }) {
             </div>
             <div className="car-info">
                 <h2>{car.carManufacturer} {car.carModel}</h2>
-                <p>{car.productionYear} • {car.fuel} • {car.bodyType}</p>
+                
                 <p>${car.price.toLocaleString()}</p>
+                <button className='edit-button'>Edit</button>
+                <button className='delete-button'>Delete</button>
             </div>
         </div>
     );
