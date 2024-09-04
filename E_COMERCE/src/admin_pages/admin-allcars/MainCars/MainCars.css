@@ -1,0 +1,18 @@
+.main-cars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Create 3 equal-width columns */
+    gap: 20px; /* Add space between the cards */
+    padding: 20px;
+}
+
+.card-masina {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card-masina:hover {
+    transform: translateY(-10px);
+}
