@@ -1,10 +1,28 @@
-import React from "react";
+
 import './our-cars-pagination.css'
 
-function OurCarsPagination(){
-    return<div className="our-cars-pagination-div">
+import React from 'react';
 
-    </div>
-}
+const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
+    const pageNumbers = [];
 
-export default OurCarsPagination;
+    for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
+        pageNumbers.push(i);
+    }
+
+    return (
+        <nav>
+            <ul className="pagination">
+                {pageNumbers.map(number => (
+                    <li key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
+                        <button onClick={() => paginate(number)} className="page-link">
+                            {number}
+                        </button>
+                    </li>
+                ))}
+            </ul>
+        </nav>
+    );
+};
+
+export default Pagination;

@@ -1,37 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import CarCardHolder from "../car-info-card-holder/car-info-card-holder-components/car-info-card-holder-components";
 import SelectionContainer from "../your-selections/atoms/selection-container/selection-container";
 import './our-cars-page-components.css';
 import SelectMenu from "../select-menu/select-menu-components/select-menu-components";
 import OurCarsTitle from "../our-cars-tittle/our-cars-tittle-component";
 import OurCarsInfoBottom from "../our-cars-info-bottom/our-cars-info-bottom";
-import OurCarsPagination from "../our-cars-pagination/our-cars-pagination";
+import Pagination from "../our-cars-pagination/our-cars-pagination";
 import FooterComponent from "../../home-page/footer/footer-component/footer-component";
 
-function OurCarsPage({ cars } ) {
+function OurCarsPage({ cars }) {
+    const [currentPage, setCurrentPage] = useState(1);
+    const carsPerPage = 6;
+
+    // Calculate the indexes for slicing the cars array
+    const indexOfLastCar = currentPage * carsPerPage;
+    const indexOfFirstCar = indexOfLastCar - carsPerPage;
+    const currentCars = cars.slice(indexOfFirstCar, indexOfLastCar);
+
+    const paginate = pageNumber => {
+        setCurrentPage(pageNumber);
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to the top of the page
+    };
+
     return (
         <div>
-        <div className="our-cars-div">
-            <div className="tittile-div">
-                <OurCarsTitle />
-            </div>
-            <div className="our-cars-page">
-                <div>
-                    
-                    <SelectMenu />
+            <div className="our-cars-div">
+                <div className="tittile-div">
+                    <OurCarsTitle />
                 </div>
-                <div>
-                    <SelectionContainer />
-                    {/* Map over the cars array to render each CarCardHolder */}
-                    {cars.slice(0, 6).map(car => (
-                        <CarCardHolder key={car._id} car={car} />
-                    ))}
-                    <OurCarsPagination />
+                <div className="our-cars-page">
+                    <div>
+                        <SelectMenu />
+                    </div>
+                    <div>
+                        <SelectionContainer />
+                        {/* Map over the currentCars array to render each CarCardHolder */}
+                        {currentCars.map(car => (
+                            <CarCardHolder key={car._id} car={car} />
+                        ))}
+                        {/* Pass props to Pagination component */}
+                        <Pagination
+                            itemsPerPage={carsPerPage}
+                            totalItems={cars.length}
+                            paginate={paginate}
+                            currentPage={currentPage}
+                        />
+                    </div>
                 </div>
+                <OurCarsInfoBottom />
             </div>
-            <OurCarsInfoBottom />
-        </div>
-        <FooterComponent/>
+            <FooterComponent />
         </div>
     );
 }
