@@ -1,6 +1,7 @@
 import React from "react";
 import searchIcon from './assets/searchIcon.png';
 import './HeaderSearch.css';
+import InputSearch from "../../../home-page/atoms/input-search/input";
 
 function HeaderSearch() {
   return (
@@ -9,9 +10,8 @@ function HeaderSearch() {
         <button className="header-btn active">Edit / add cars</button>
         <button className="header-btn">Visitor view</button>
       </div>
-      <div className="search-container">
-        <input type="text" className="input-search" placeholder="Search..." />
-        <button className="Lupa"><img src={searchIcon} alt="Search" /></button>
+      <div className="search-container-admin-edit-page">
+        <InputSearch/>
       </div>
       <div className="sort-by">
         <span>Sort by:</span>

@@ -32,23 +32,17 @@
     width: 7.813rem;
   }
   
-  .search-container {
+  .search-container-admin-edit-page{
     display: flex;
     align-items: center;
-    border: 1px solid #000; 
+     
     border-radius: 25px;
     overflow: hidden;
     padding-left: 10px;
     width: 23.563rem;
   }
   
-  .input-search {
-    border: none;
-    outline: none;
-    padding: 8px;
-    width: 200px; 
-    background-color:#f5f5f5 ;
-  }
+
   
   .Lupa {
     background-color: transparent;
