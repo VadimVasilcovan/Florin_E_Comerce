@@ -34,7 +34,6 @@ function CarCardHolder({ car }) {
         <CarNameInfoHolder car={car} />
         <CarYear car={car} />
         <CarDetailsTop car={car} />
-        <IsHybrid />
         <PriceCarCardHolder car={car} />
         <div className='car-card-holder-buttons-div'>
           <DetailsBtn car={car} />

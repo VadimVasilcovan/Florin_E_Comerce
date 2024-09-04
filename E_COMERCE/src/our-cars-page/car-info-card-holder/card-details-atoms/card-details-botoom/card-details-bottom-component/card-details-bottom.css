@@ -1,5 +1,20 @@
-.car-details-bottom-div{
+.card-details-bottom {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.34rem;
-}
+    margin-bottom: 1.6rem;
+    justify-content: flex-start;
+  }
+  
+  .details-top-row, .details-bottom-row {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping if items overflow */
+    justify-content: flex-start;
+   
+  }
+  
+  .detail-item {
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Prevents text wrapping */
+    /* Space between items */
+  }
