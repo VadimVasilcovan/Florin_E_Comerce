@@ -2,54 +2,38 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    
     background-color: #fff;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 300px;
-    padding: 16px;
-    margin: 16px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
+    width: 37.5rem;
+    
+}
+.imagini{
+    display:flex;
+    flex-direction: column;
   
-  .main-image-container {
-    text-align: center;
-  }
-  
-
-  
-  .thumbnail-images-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 8px;
-  }
-  
-  .thumbnail-image {
-    width: 70px;
-    height: 70px;
-    cursor: pointer;
-    border-radius: 4px;
-    border: 2px solid transparent;
-  }
-  
-  .thumbnail-image:hover {
-    border-color: #007BFF;
-  }
-  
-  .car-info-card-masina {
-    margin-top: 16px;
-  }
-  
-  .button-group {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 8px;
-    width: 100%;
 }
 
+
+.main-photo {
+    width: 100%;
+    height: 13.063rem;
+    object-fit: cover;
+    
+}
+
+.small-photos {
+    display: flex;
+   gap: 0.2rem;
+    margin-top: 0.2rem;
+    width: 100%;
+
+}
+.small-photos img{
+    width: 7.513rem;
+    height: 7.563rem;
+}
 .thumbnail-photo {
     width: 30%;
     height: 60px;
@@ -59,41 +43,60 @@
 }
 
 .car-info {
-    text-align: center;
-    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 11.644rem;
+    margin-right: 1rem;
 }
 
+
+
 .car-info h2 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 8px;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    max-height: 4rem; /* Allow up to 2 lines */
+    overflow:visible;
+    word-wrap: break-word; /* Allow text to wrap onto multiple lines */
+    line-height: 1; /* Adjust line height for readability */
 }
+
+
 
 .car-info p {
     font-size: 14px;
-    color: #555;
-    margin: 4px 0;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    margin-top: auto;
 }
 
 .card-masina button {
-    width: 100%;
+    width: 11.875rem;
+    height: 3.75rem;
     padding: 10px;
-    margin-top: 10px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    margin-top: auto;
+    color: white;
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
 }
 
 .card-masina .edit-button {
-    background-color: #000;
+    background-color: #0F121F;
     color: #fff;
-    margin-bottom: 8px;
+    margin-bottom: 1rem;
+  
 }
 
 .card-masina .delete-button {
     background-color: #fff;
     color: #000;
     border: 1px solid #000;
+    margin-bottom: 0.3rem;
 }
+ 

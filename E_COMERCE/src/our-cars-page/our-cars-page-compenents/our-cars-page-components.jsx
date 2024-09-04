@@ -19,7 +19,7 @@ function OurCarsPage({ cars }) {
 
     const paginate = pageNumber => {
         setCurrentPage(pageNumber);
-        window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to the top of the page
+        window.scrollTo({ top: 0, behavior: 'smooth' }); 
     };
 
     return (
@@ -34,11 +34,11 @@ function OurCarsPage({ cars }) {
                     </div>
                     <div>
                         <SelectionContainer />
-                        {/* Map over the currentCars array to render each CarCardHolder */}
+                        
                         {currentCars.map(car => (
                             <CarCardHolder key={car._id} car={car} />
                         ))}
-                        {/* Pass props to Pagination component */}
+                        
                         <Pagination
                             itemsPerPage={carsPerPage}
                             totalItems={cars.length}

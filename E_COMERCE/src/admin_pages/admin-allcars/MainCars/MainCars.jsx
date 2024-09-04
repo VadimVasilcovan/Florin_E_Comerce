@@ -20,17 +20,19 @@ function MainCars() {
     }, []);
 
     return (
-        <div>
-            <div>
-                <h1>Edit/addcars</h1>
+        
+        <div className="MainCarsall-div">
+            <div className="adminall-title">
+                <h1>Edit / add cars</h1>
                 <button>+ Add new car</button>
             </div>
         <div className="main-cars">
-            {cars.slice(0, 9).map((car) => (
+            {cars.slice(0, 8).map((car) => (
                 <CardMasina key={car._id} car={car} />
             ))}
         </div>
         </div>
+        
     );
 }
 
