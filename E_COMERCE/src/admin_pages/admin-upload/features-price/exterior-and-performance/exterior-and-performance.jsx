@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./exterior-and-performance.css";
 
-function ExteriorAndPerformance() {
-    const [inputValue, setInputValue] = useState("");
-    const [values, setValues] = useState([]);
+function ExteriorAndPerformance({ setExteriorFeatures }) {
+  const [inputValue, setInputValue] = useState("");
+  const [values, setValues] = useState([]);
 
-    const handleButtonClick = () => {
-        if (inputValue.trim() !== "") {
-            setValues([...values, inputValue]);
-            setInputValue("");
-        }
-    };
+  const handleButtonClick = () => {
+    if (inputValue.trim() !== "") {
+      setValues([...values, inputValue]);
+      setInputValue("");
+    }
+  };
 
-    const handleDelete = (indexToDelete) => {
-        setValues(values.filter((_, index) => index !== indexToDelete));
-    };
+  const handleDelete = (indexToDelete) => {
+    setValues(values.filter((_, index) => index !== indexToDelete));
+  };
+
+  useEffect(() => {
+    setExteriorFeatures(values);
+  }, [values, setExteriorFeatures]);
 
     return (
         <div className="main-features-div">

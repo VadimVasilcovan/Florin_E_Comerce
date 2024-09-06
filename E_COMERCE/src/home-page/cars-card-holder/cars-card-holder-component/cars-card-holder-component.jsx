@@ -4,6 +4,7 @@ import './cars-card-holder-component.css';
 
 function CarsCardHolderComponent() {
     const [cars, setCars] = useState([]);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate(); 
 
     useEffect(() => {
@@ -11,8 +12,12 @@ function CarsCardHolderComponent() {
             .then(response => response.json())
             .then(data => {
                 setCars(data);
+                setLoading(false);
             })
-            .catch(error => console.error('Error fetching cars:', error));
+            .catch(error => {
+                console.error('Error fetching cars:', error);
+                setLoading(false);
+            });
     }, []);
 
     const handleCardClick = (carId) => {
@@ -21,20 +26,26 @@ function CarsCardHolderComponent() {
 
     return (
         <div className="cars-card-holder-component">
-            {cars.slice(0, 6).map(car => ( // Displaying only the first 6 items
-                <div 
-                    key={car._id} 
-                    className="car-card"
-                    onClick={() => handleCardClick(car._id)} 
-                >
-                    <div className='car-name-model-div'>
-                        <h1 className='car-name'>{car.carManufacturer}</h1>
-                        <h1 className='car-model'>{car.carModel}</h1>
-                    </div>
-                    <img className="main-picture" src={car.pictures.main} alt="Car Main" />
-                    <h1 className="car-price">Price: ${car.price}</h1>
+            {loading ? (
+                <div className="loader-container">
+                    <div className="loader"></div>
                 </div>
-            ))}
+            ) : (
+                cars.slice(0, 6).map(car => (
+                    <div 
+                        key={car._id} 
+                        className="car-card"
+                        onClick={() => handleCardClick(car._id)} 
+                    >
+                        <div className='car-name-model-div'>
+                            <h2 className='car-name'>{car.carManufacturer}</h2>
+                            <h2 className='car-model'>{car.carModel}</h2>
+                        </div>
+                        <img className="main-picture" src={car.pictures.main} alt="Car Main" />
+                        <h2 className="car-price">Price: ${car.price}</h2>
+                    </div>
+                ))
+            )}
         </div>
     );
 }

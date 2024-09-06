@@ -1,20 +1,24 @@
-import { useState } from "react";
-import './interior-and-comfort.css';
+import React, { useState, useEffect } from "react";
+import "./interior-and-comfort.css";
 
-function InteriorAndComfort() {
-    const [inputValue, setInputValue] = useState("");
-    const [values, setValues] = useState([]);
+function InteriorAndComfort({ setInteriorFeatures }) {
+  const [inputValue, setInputValue] = useState("");
+  const [values, setValues] = useState([]);
 
-    const handleButtonClick = () => {
-        if (inputValue.trim() !== "") {
-            setValues([...values, inputValue]);
-            setInputValue("");
-        }
-    };
+  const handleButtonClick = () => {
+    if (inputValue.trim() !== "") {
+      setValues([...values, inputValue]);
+      setInputValue("");
+    }
+  };
 
-    const handleDelete = (indexToDelete) => {
-        setValues(values.filter((_, index) => index !== indexToDelete));
-    };
+  const handleDelete = (indexToDelete) => {
+    setValues(values.filter((_, index) => index !== indexToDelete));
+  };
+
+  useEffect(() => {
+    setInteriorFeatures(values);
+  }, [values, setInteriorFeatures]);
 
     return (
         <div className="main-features-div">

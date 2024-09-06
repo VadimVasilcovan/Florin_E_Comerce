@@ -4,7 +4,18 @@ span {
 
   h1{
     font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 400;
   }
+
+  h2{
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 400;
+  }
+  h3{
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 400;
+  }
+
   button{
     font-family: "IBM Plex Sans", sans-serif;
   }
