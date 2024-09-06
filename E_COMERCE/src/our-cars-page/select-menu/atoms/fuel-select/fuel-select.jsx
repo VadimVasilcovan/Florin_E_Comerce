@@ -1,13 +1,20 @@
-import React, {useState} from "react";
-import './fuel-select.css'
+import React, { useState, useEffect } from "react";
+import './fuel-select.css';
 
+function SelectFuel({ cars, onChange }) {
+    const [value, setValue] = useState('default');
+    const [fuels, setFuels] = useState([]);
 
-function SelectFuel(){
-     
-    const [value, setValue] = useState('default'); // default value for the placeholder
+    useEffect(() => {
+        if (cars && Array.isArray(cars)) {
+            const uniqueFuels = [...new Set(cars.map(car => car.fuel))];
+            setFuels(uniqueFuels);
+        }
+    }, [cars]);
 
     const changeSelect = (event) => {
         setValue(event.target.value);
+        onChange(event);
     };
 
     return (
@@ -16,12 +23,18 @@ function SelectFuel(){
                 <option value="default" disabled hidden>
                     Fuel
                 </option>
-                <option value="Мышь">Мышь</option>
-                <option value="Кот">Кот</option>
-                <option value="Сыр">Сыр</option>
-                <option value="Молоко">Молоко</option>
+                {fuels.length > 0 ? (
+                    fuels.map((fuel, index) => (
+                        <option key={index} value={fuel}>
+                            {fuel}
+                        </option>
+                    ))
+                ) : (
+                    <option value="default" disabled>
+                        No fuels available
+                    </option>
+                )}
             </select>
-            {/*<p>Выбрана опция: {value !== 'default' ? value : 'Нет выбора'}</p>*/}
         </div>
     );
 }

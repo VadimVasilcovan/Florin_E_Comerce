@@ -1,13 +1,21 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import './manufacturer-select.css'
 
-
-function Manufacturer({car}){
-     
+function Manufacturer({ cars, onChange }) {
     const [value, setValue] = useState('default'); // default value for the placeholder
+    const [manufacturers, setManufacturers] = useState([]);
+
+    useEffect(() => {
+        // Extract unique manufacturers when cars data changes
+        if (cars && Array.isArray(cars)) {
+            const uniqueManufacturers = [...new Set(cars.map(car => car.carManufacturer))];
+            setManufacturers(uniqueManufacturers);
+        }
+    }, [cars]);
 
     const changeSelect = (event) => {
         setValue(event.target.value);
+        onChange(event);
     };
 
     return (
@@ -16,12 +24,19 @@ function Manufacturer({car}){
                 <option value="default" disabled hidden>
                     Manufacturer
                 </option>
-                <option value="Мышь">Мышь</option>
-                <option value="Кот">Кот</option>
-                <option value="Сыр">Сыр</option>
-                <option value="Молоко">Молоко</option>
+                {manufacturers.length > 0 ? (
+                    manufacturers.map((manufacturer, index) => (
+                        <option key={index} value={manufacturer}>
+                            {manufacturer}
+                        </option>
+                    ))
+                ) : (
+                    <option value="default" disabled>
+                        No manufacturers available
+                    </option>
+                )}
             </select>
-            {/*<p>Выбрана опция: {value !== 'default' ? value : 'Нет выбора'}</p>*/}
+            {/*<p>Selected option: {value !== 'default' ? value : 'No selection'}</p>*/}
         </div>
     );
 }

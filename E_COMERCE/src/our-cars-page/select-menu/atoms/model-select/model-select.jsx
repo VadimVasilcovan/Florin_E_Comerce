@@ -1,27 +1,40 @@
-import React, {useState} from "react";
-import './model-select.css'
+import React, { useState, useEffect } from "react";
+import './model-select.css';
 
+function SelectModel({ cars, onChange }) {
+    const [value, setValue] = useState('default');
+    const [models, setModels] = useState([]);
 
-function SelectModel(){
-     
-    const [value, setValue] = useState('default'); // default value for the placeholder
+    useEffect(() => {
+        if (cars && Array.isArray(cars)) {
+            const uniqueModels = [...new Set(cars.map(car => car.carModel))];
+            setModels(uniqueModels);
+        }
+    }, [cars]);
 
     const changeSelect = (event) => {
         setValue(event.target.value);
+        onChange(event);
     };
 
     return (
         <div className="model-container">
-            <select  className="select-element-model" value={value} onChange={changeSelect}>
+            <select className="select-element-model" value={value} onChange={changeSelect}>
                 <option value="default" disabled hidden>
                     Model
                 </option>
-                <option value="Мышь">Мышь</option>
-                <option value="Кот">Кот</option>
-                <option value="Сыр">Сыр</option>
-                <option value="Молоко">Молоко</option>
+                {models.length > 0 ? (
+                    models.map((model, index) => (
+                        <option key={index} value={model}>
+                            {model}
+                        </option>
+                    ))
+                ) : (
+                    <option value="default" disabled>
+                        No models available
+                    </option>
+                )}
             </select>
-            {/*<p>Выбрана опция: {value !== 'default' ? value : 'Нет выбора'}</p>*/}
         </div>
     );
 }

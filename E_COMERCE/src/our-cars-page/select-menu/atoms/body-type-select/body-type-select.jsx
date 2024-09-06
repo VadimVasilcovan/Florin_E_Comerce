@@ -1,27 +1,40 @@
-import React, {useState} from "react";
-import './body-type-select.css'
+import React, { useState, useEffect } from "react";
+import './body-type-select.css';
 
+function SelectBodyType({ cars, onChange }) {
+    const [value, setValue] = useState('default');
+    const [bodyTypes, setBodyTypes] = useState([]);
 
-function SelectBodyType(){
-     
-    const [value, setValue] = useState('default'); // default value for the placeholder
+    useEffect(() => {
+        if (cars && Array.isArray(cars)) {
+            const uniqueBodyTypes = [...new Set(cars.map(car => car.bodyType))];
+            setBodyTypes(uniqueBodyTypes);
+        }
+    }, [cars]);
 
     const changeSelect = (event) => {
         setValue(event.target.value);
+        onChange(event);
     };
 
     return (
         <div className="body-type-container">
-            <select  className="select-element-body-type" value={value} onChange={changeSelect}>
+            <select className="select-element-body-type" value={value} onChange={changeSelect}>
                 <option value="default" disabled hidden>
                     Body Type
                 </option>
-                <option value="Мышь">Мышь</option>
-                <option value="Кот">Кот</option>
-                <option value="Сыр">Сыр</option>
-                <option value="Молоко">Молоко</option>
+                {bodyTypes.length > 0 ? (
+                    bodyTypes.map((type, index) => (
+                        <option key={index} value={type}>
+                            {type}
+                        </option>
+                    ))
+                ) : (
+                    <option value="default" disabled>
+                        No body types available
+                    </option>
+                )}
             </select>
-            {/*<p>Выбрана опция: {value !== 'default' ? value : 'Нет выбора'}</p>*/}
         </div>
     );
 }

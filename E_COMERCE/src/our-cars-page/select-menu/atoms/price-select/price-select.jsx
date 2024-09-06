@@ -1,13 +1,20 @@
-import React, {useState} from "react";
-import './price-select.css'
+import React, { useState, useEffect } from "react";
+import './price-select.css';
 
+function SelectPrice({ cars, onChange }) {
+    const [value, setValue] = useState('default');
+    const [prices, setPrices] = useState([]);
 
-function SelectPrice(){
-     
-    const [value, setValue] = useState('default'); // default value for the placeholder
+    useEffect(() => {
+        if (cars && Array.isArray(cars)) {
+            const uniquePrices = [...new Set(cars.map(car => car.price))];
+            setPrices(uniquePrices);
+        }
+    }, [cars]);
 
     const changeSelect = (event) => {
         setValue(event.target.value);
+        onChange(event);
     };
 
     return (
@@ -16,12 +23,18 @@ function SelectPrice(){
                 <option value="default" disabled hidden>
                     Price
                 </option>
-                <option value="Мышь">Мышь</option>
-                <option value="Кот">Кот</option>
-                <option value="Сыр">Сыр</option>
-                <option value="Молоко">Молоко</option>
+                {prices.length > 0 ? (
+                    prices.map((price, index) => (
+                        <option key={index} value={price}>
+                            {price}
+                        </option>
+                    ))
+                ) : (
+                    <option value="default" disabled>
+                        No prices available
+                    </option>
+                )}
             </select>
-            {/*<p>Выбрана опция: {value !== 'default' ? value : 'Нет выбора'}</p>*/}
         </div>
     );
 }
