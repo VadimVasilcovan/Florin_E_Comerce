@@ -1,13 +1,20 @@
-import React, {useState} from "react";
-import './production-year-select.css'
+import React, { useState, useEffect } from "react";
+import './production-year-select.css';
 
+function SelectProductionYear({ cars, onChange }) {
+    const [value, setValue] = useState('default');
+    const [years, setYears] = useState([]);
 
-function SelectProductionYear(){
-     
-    const [value, setValue] = useState('default'); // default value for the placeholder
+    useEffect(() => {
+        if (cars && Array.isArray(cars)) {
+            const uniqueYears = [...new Set(cars.map(car => car.productionYear))];
+            setYears(uniqueYears);
+        }
+    }, [cars]);
 
     const changeSelect = (event) => {
         setValue(event.target.value);
+        onChange(event);
     };
 
     return (
@@ -16,12 +23,18 @@ function SelectProductionYear(){
                 <option value="default" disabled hidden>
                     Production Year
                 </option>
-                <option value="Мышь">Мышь</option>
-                <option value="Кот">Кот</option>
-                <option value="Сыр">Сыр</option>
-                <option value="Молоко">Молоко</option>
+                {years.length > 0 ? (
+                    years.map((year, index) => (
+                        <option key={index} value={year}>
+                            {year}
+                        </option>
+                    ))
+                ) : (
+                    <option value="default" disabled>
+                        No production years available
+                    </option>
+                )}
             </select>
-            {/*<p>Выбрана опция: {value !== 'default' ? value : 'Нет выбора'}</p>*/}
         </div>
     );
 }

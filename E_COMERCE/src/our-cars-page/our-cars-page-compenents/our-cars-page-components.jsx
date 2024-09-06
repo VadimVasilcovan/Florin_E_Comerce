@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import CarCardHolder from "../car-info-card-holder/car-info-card-holder-components/car-info-card-holder-components";
 import SelectionContainer from "../your-selections/atoms/selection-container/selection-container";
 import './our-cars-page-components.css';
@@ -10,17 +10,23 @@ import FooterComponent from "../../home-page/footer/footer-component/footer-comp
 
 function OurCarsPage({ cars }) {
     const [currentPage, setCurrentPage] = useState(1);
+    const [filteredCars, setFilteredCars] = useState(cars); // State for filtered cars
     const carsPerPage = 6;
 
     // Calculate the indexes for slicing the cars array
     const indexOfLastCar = currentPage * carsPerPage;
     const indexOfFirstCar = indexOfLastCar - carsPerPage;
-    const currentCars = cars.slice(indexOfFirstCar, indexOfLastCar);
+    const currentCars = filteredCars.slice(indexOfFirstCar, indexOfLastCar);
 
-    const paginate = pageNumber => {
+    const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
-        window.scrollTo({ top: 0, behavior: 'smooth' }); 
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
+
+    const handleFilterChange = useCallback((filteredCars) => {
+        setFilteredCars(filteredCars);
+        setCurrentPage(1); // Reset to first page on filter change
+    }, []);
 
     return (
         <div>
@@ -30,7 +36,7 @@ function OurCarsPage({ cars }) {
                 </div>
                 <div className="our-cars-page">
                     <div>
-                        <SelectMenu />
+                        <SelectMenu cars={cars} onFilterChange={handleFilterChange} /> {/* Pass handleFilterChange */}
                     </div>
                     <div>
                         <SelectionContainer />
@@ -41,7 +47,7 @@ function OurCarsPage({ cars }) {
                         
                         <Pagination
                             itemsPerPage={carsPerPage}
-                            totalItems={cars.length}
+                            totalItems={filteredCars.length} 
                             paginate={paginate}
                             currentPage={currentPage}
                         />

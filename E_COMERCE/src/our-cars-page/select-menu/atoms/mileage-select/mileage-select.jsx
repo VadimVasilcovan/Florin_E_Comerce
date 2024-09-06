@@ -1,13 +1,20 @@
-import React, {useState} from "react";
-import './mileage-select.css'
+import React, { useState, useEffect } from "react";
+import './mileage-select.css';
 
+function SelectMileage({ cars, onChange }) {
+    const [value, setValue] = useState('default');
+    const [mileages, setMileages] = useState([]);
 
-function SelectMileage(){
-     
-    const [value, setValue] = useState('default'); // default value for the placeholder
+    useEffect(() => {
+        if (cars && Array.isArray(cars)) {
+            const uniqueMileages = [...new Set(cars.map(car => car.mileage))];
+            setMileages(uniqueMileages);
+        }
+    }, [cars]);
 
     const changeSelect = (event) => {
         setValue(event.target.value);
+        onChange(event);
     };
 
     return (
@@ -16,12 +23,18 @@ function SelectMileage(){
                 <option value="default" disabled hidden>
                     Mileage
                 </option>
-                <option value="Мышь">Мышь</option>
-                <option value="Кот">Кот</option>
-                <option value="Сыр">Сыр</option>
-                <option value="Молоко">Молоко</option>
+                {mileages.length > 0 ? (
+                    mileages.map((mileage, index) => (
+                        <option key={index} value={mileage}>
+                            {mileage}
+                        </option>
+                    ))
+                ) : (
+                    <option value="default" disabled>
+                        No mileage available
+                    </option>
+                )}
             </select>
-            {/*<p>Выбрана опция: {value !== 'default' ? value : 'Нет выбора'}</p>*/}
         </div>
     );
 }
