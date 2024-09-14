@@ -1,7 +1,34 @@
-.Selection-Container-div{
-    width: 51.50rem;
-    height:10.50rem;
-    border-style: solid;
+/* selection-container.css */
+.Selection-Container-div {
+    width: 792px;
+    height: 6rem;
     border-radius: 0.5rem;
-    border: 1px solid grey;
+    padding: 1rem; /* Padding inside the container */
+    background-color: #f9f9f9; /* Light background color */
+    overflow: auto; /* Ensures content does not overflow */
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap if necessary */
+    gap: 0.5rem; /* Space between filter items */
+}
+
+.filter-item {
+    background-color:#e1dfdf; /* White background for each item */
+    color: #333333; /* Dark text color for contrast */
+    padding: 0.1rem 0.5rem; /* Padding inside each filter item */
+    border-radius: 0.2rem; /* Increased border radius for more rounded corners */
+    font-size: 1rem; /* Adjusted font size for better readability */
+    font-weight: 400; /* Increased font weight for emphasis */
+    margin: 0.25rem; /* Margin between filter items */
+    display: inline-flex; /* Ensure item fits content and aligns correctly */
+    align-items: center; /* Vertically center text */
+    min-height: 2rem; /* Minimum height to maintain uniformity */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow text if it gets too long */
+    text-overflow: ellipsis; /* Add ellipsis (...) for overflow text */
+    height: 5px;
+    font-family: "IBM Plex Sans", sans-serif;
+}
+
+.filter-item:last-child {
+    margin-right: 0; /* Remove right margin from the last item */
 }

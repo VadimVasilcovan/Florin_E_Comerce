@@ -7,6 +7,8 @@ import cors from 'cors';
 
 const app = express();
 
+
+
 // Enable CORS only for the specific frontend origin (localhost:5173)
 app.use(cors({
     origin: 'http://localhost:5173', // Allow only this origin to access the API

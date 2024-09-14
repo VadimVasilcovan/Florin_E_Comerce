@@ -1,40 +1,58 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import './body-type-select.css';
 
-function SelectBodyType({ cars, onChange }) {
-    const [value, setValue] = useState('default');
-    const [bodyTypes, setBodyTypes] = useState([]);
+function SelectBodyType({ bodyTypes, selected, onChange }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedBodyType, setSelectedBodyType] = useState('Body Type');
+    const containerRef = useRef(null);
 
+    // Close dropdown when clicking outside
     useEffect(() => {
-        if (cars && Array.isArray(cars)) {
-            const uniqueBodyTypes = [...new Set(cars.map(car => car.bodyType))];
-            setBodyTypes(uniqueBodyTypes);
-        }
-    }, [cars]);
+        const handleClickOutside = (event) => {
+            if (containerRef.current && !containerRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
-    const changeSelect = (event) => {
-        setValue(event.target.value);
-        onChange(event);
+    // Update selectedBodyType state when the selected prop changes
+    useEffect(() => {
+        setSelectedBodyType(selected || 'Body Type');
+    }, [selected]);
+
+    const handleOptionClick = (bodyType) => {
+        setSelectedBodyType(bodyType);
+        setIsOpen(false);
+        onChange(bodyType); // Notify parent of the selected body type
     };
 
     return (
-        <div className="body-type-container">
-            <select className="select-element-body-type" value={value} onChange={changeSelect}>
-                <option value="default" disabled hidden>
-                    Body Type
-                </option>
-                {bodyTypes.length > 0 ? (
-                    bodyTypes.map((type, index) => (
-                        <option key={index} value={type}>
-                            {type}
-                        </option>
-                    ))
-                ) : (
-                    <option value="default" disabled>
-                        No body types available
-                    </option>
-                )}
-            </select>
+        <div className="body-type-container" ref={containerRef}>
+            <div
+                className="select-element-body-type"
+                onClick={() => setIsOpen(!isOpen)}
+            >
+                {selectedBodyType}
+            </div>
+            {isOpen && (
+                <div className="dropdown-body-type-menu">
+                    {bodyTypes.length > 0 ? (
+                        bodyTypes.map((type, index) => (
+                            <div
+                                key={index}
+                                className="dropdown-option"
+                                onClick={() => handleOptionClick(type)}
+                            >
+                                {type}
+                            </div>
+                        ))
+                    ) : (
+                        <div className="dropdown-option">No body types available</div>
+                    )}
+                </div>
+            )}
         </div>
     );
 }

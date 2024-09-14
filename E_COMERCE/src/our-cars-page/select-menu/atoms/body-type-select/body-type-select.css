@@ -1,22 +1,33 @@
-.body-type-container{
+.body-type-container {
     display: inline-block;
+    font-family: 'YourDefaultFont', sans-serif; /* Ensure the same font is used */
 }
 
-
-.select-element-body-type{
+.select-element-body-type {
     padding: 10px;
     border: 0.1rem solid #ccc;
     font-size: 16px;
-    width: 22rem; /* Optional: Full width */
-    height: 3.5rem;
+    height: 2rem;
     border-top: none;
     border-left: none;
     border-right: none;
 }
 
-.select-element-body-type:focus {
+.select-element-body-type:hover {
     border-color: #D8513F;
-    
     outline: none;
 }
 
+.dropdown-body-type-menu {
+    width: 22rem; /* Match the width of the dropdowns for consistency */
+}
+
+.dropdown-option {
+    padding: 10px;
+    cursor: pointer;
+    border-color: #D8513F;
+}
+
+.dropdown-option:hover {
+    border-color: #D8513F; /* Match the hover background color */
+}

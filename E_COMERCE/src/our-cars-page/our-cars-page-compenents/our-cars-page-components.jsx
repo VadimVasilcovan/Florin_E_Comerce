@@ -11,6 +11,16 @@ import FooterComponent from "../../home-page/footer/footer-component/footer-comp
 function OurCarsPage({ cars }) {
     const [currentPage, setCurrentPage] = useState(1);
     const [filteredCars, setFilteredCars] = useState(cars); // State for filtered cars
+    const [selectedFilters, setSelectedFilters] = useState({
+        manufacturer: null,
+        model: null,
+        color: null,
+        bodyType: null,
+        priceRange: { min: null, max: null },
+        mileage: null,
+        productionYear: null,
+        fuel: null
+    }); // State for selected filters
     const carsPerPage = 6;
 
     // Calculate the indexes for slicing the cars array
@@ -23,8 +33,9 @@ function OurCarsPage({ cars }) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    const handleFilterChange = useCallback((filteredCars) => {
+    const handleFilterChange = useCallback((filteredCars, filters) => {
         setFilteredCars(filteredCars);
+        setSelectedFilters(filters); // Update selected filters
         setCurrentPage(1); // Reset to first page on filter change
     }, []);
 
@@ -39,7 +50,16 @@ function OurCarsPage({ cars }) {
                         <SelectMenu cars={cars} onFilterChange={handleFilterChange} /> {/* Pass handleFilterChange */}
                     </div>
                     <div>
-                        <SelectionContainer />
+                        <SelectionContainer
+                            selectedManufacturer={selectedFilters.manufacturer}
+                            selectedModel={selectedFilters.model}
+                            selectedColor={selectedFilters.color}
+                            selectedBodyType={selectedFilters.bodyType}
+                            priceRange={selectedFilters.priceRange}
+                            selectedMileage={selectedFilters.mileage}
+                            selectedProductionYear={selectedFilters.productionYear}
+                            selectedFuel={selectedFilters.fuel}
+                        />
                         
                         {currentCars.map(car => (
                             <CarCardHolder key={car._id} car={car} />

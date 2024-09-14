@@ -1,40 +1,58 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import './model-select.css';
 
-function SelectModel({ cars, onChange }) {
-    const [value, setValue] = useState('default');
-    const [models, setModels] = useState([]);
+function SelectModel({ models, selected, onChange }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedModel, setSelectedModel] = useState('Model');
+    const containerRef = useRef(null);
 
+    // Close dropdown when clicking outside
     useEffect(() => {
-        if (cars && Array.isArray(cars)) {
-            const uniqueModels = [...new Set(cars.map(car => car.carModel))];
-            setModels(uniqueModels);
-        }
-    }, [cars]);
+        const handleClickOutside = (event) => {
+            if (containerRef.current && !containerRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
-    const changeSelect = (event) => {
-        setValue(event.target.value);
-        onChange(event);
+    // Update selectedModel state when the selected prop changes
+    useEffect(() => {
+        setSelectedModel(selected || 'Model');
+    }, [selected]);
+
+    const handleOptionClick = (model) => {
+        setSelectedModel(model);
+        setIsOpen(false);
+        onChange(model); // Notify parent of the selected model
     };
 
     return (
-        <div className="model-container">
-            <select className="select-element-model" value={value} onChange={changeSelect}>
-                <option value="default" disabled hidden>
-                    Model
-                </option>
-                {models.length > 0 ? (
-                    models.map((model, index) => (
-                        <option key={index} value={model}>
-                            {model}
-                        </option>
-                    ))
-                ) : (
-                    <option value="default" disabled>
-                        No models available
-                    </option>
-                )}
-            </select>
+        <div className="model-container" ref={containerRef}>
+            <div
+                className="select-element-model"
+                onClick={() => setIsOpen(!isOpen)}
+            >
+                {selectedModel}
+            </div>
+            {isOpen && (
+                <div className="dropdown-model-menu">
+                    {models.length > 0 ? (
+                        models.map((model, index) => (
+                            <div
+                                key={index}
+                                className="dropdown-option"
+                                onClick={() => handleOptionClick(model)}
+                            >
+                                {model}
+                            </div>
+                        ))
+                    ) : (
+                        <div className="dropdown-option">No models available</div>
+                    )}
+                </div>
+            )}
         </div>
     );
 }

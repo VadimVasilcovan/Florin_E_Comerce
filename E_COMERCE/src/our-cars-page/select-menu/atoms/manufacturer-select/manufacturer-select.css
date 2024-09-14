@@ -1,27 +1,38 @@
-.manufacturer-container{
+.manufacturer-container {
     display: inline-block;
+    font-family: 'YourDefaultFont', sans-serif; /* Ensure the same font is used */
 }
 
-.select-element-manufacturer{
+.select-element-manufacturer {
     padding: 10px;
     border: 0.1rem solid #ccc;
     font-size: 16px;
-    width: 22rem; /* Optional: Full width */
-    height: 3.5rem;
+    height: 2rem;
     border-top: none;
     border-left: none;
     border-right: none;
-
 }
 
-.select-element-manufacturer:focus {
+
+.select-element-manufacturer:hover {
     border-color: #D8513F;
     outline: none;
-    border-radius: 0px;
+    
 }
 
-.select-items{
-    border-radius: 0px;
+.dropdown-manufacturer-menu {
+    width: 22rem; /* Match the width of dropdown-fuel-menu */
 }
+
+.dropdown-option {
+    padding: 10px;
+    cursor: pointer;
+    border-color: #D8513F;
+}
+
+.dropdown-option:hover{
+    border-color: #D8513F;
+}
+
 
 

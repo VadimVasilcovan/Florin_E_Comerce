@@ -1,22 +1,35 @@
-.color-container{
+.color-container {
     display: inline-block;
+    font-family: 'YourDefaultFont', sans-serif; /* Ensure the same font is used */
 }
 
-
-.select-element-color{
+.select-element-color {
     padding: 10px;
     border: 0.1rem solid #ccc;
     font-size: 16px;
-    width: 22rem; /* Optional: Full width */
-    height: 3.5rem;
+    height: 2rem;
     border-top: none;
     border-left: none;
     border-right: none;
+   
+    width: 22rem; /* Ensure width matches other components */
 }
 
-.select-element-color:focus {
+.select-element-color:hover {
     border-color: #D8513F;
-    
     outline: none;
 }
 
+.dropdown-color-menu {
+    width: 22rem; /* Ensure width matches other components */
+}
+
+.dropdown-option {
+    padding: 10px;
+    cursor: pointer;
+    border-color: #D8513F;
+}
+
+.dropdown-option:hover {
+    border-color: #D8513F;
+}

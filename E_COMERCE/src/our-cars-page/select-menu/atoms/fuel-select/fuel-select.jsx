@@ -1,40 +1,63 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import './fuel-select.css';
 
-function SelectFuel({ cars, onChange }) {
-    const [value, setValue] = useState('default');
-    const [fuels, setFuels] = useState([]);
+const predefinedFuelOptions = [
+    { label: 'All Fuels', value: null },
+    { label: 'Petrol', value: 'Petrol' },
+    { label: 'Diesel', value: 'Diesel' },
+    { label: 'Electric', value: 'Electric' },
+    { label: 'Hybrid', value: 'Hybrid' },
+];
+
+function SelectFuel({ selected, onChange }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedOption, setSelectedOption] = useState('Fuel');
+    const containerRef = useRef(null);
 
     useEffect(() => {
-        if (cars && Array.isArray(cars)) {
-            const uniqueFuels = [...new Set(cars.map(car => car.fuel))];
-            setFuels(uniqueFuels);
-        }
-    }, [cars]);
+        const handleClickOutside = (event) => {
+            if (containerRef.current && !containerRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
 
-    const changeSelect = (event) => {
-        setValue(event.target.value);
-        onChange(event);
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    useEffect(() => {
+        if (!selected) {
+            setSelectedOption('Fuel');
+        } else {
+            const selectedFuel = predefinedFuelOptions.find(fuel => fuel.value === selected);
+            setSelectedOption(selectedFuel ? selectedFuel.label : 'Fuel');
+        }
+    }, [selected]);
+
+    const handleOptionClick = (label, value) => {
+        setSelectedOption(label);
+        setIsOpen(false);
+        onChange(value);
     };
 
     return (
-        <div className="fuel-container">
-            <select className="select-element-fuel" value={value} onChange={changeSelect}>
-                <option value="default" disabled hidden>
-                    Fuel
-                </option>
-                {fuels.length > 0 ? (
-                    fuels.map((fuel, index) => (
-                        <option key={index} value={fuel}>
-                            {fuel}
-                        </option>
-                    ))
-                ) : (
-                    <option value="default" disabled>
-                        No fuels available
-                    </option>
-                )}
-            </select>
+        <div className="fuel-container" ref={containerRef}>
+            <div className="select-element-fuel" onClick={() => setIsOpen(!isOpen)}>
+                {selectedOption}
+            </div>
+            {isOpen && (
+                <div className="dropdown-fuel-menu">
+                    {predefinedFuelOptions.map((fuel, index) => (
+                        <div
+                            key={index}
+                            className="dropdown-option"
+                            onClick={() => handleOptionClick(fuel.label, fuel.value)}
+                        >
+                            {fuel.label}
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 }
