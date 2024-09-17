@@ -18,6 +18,9 @@ function MainDetails({ setCarDetails }) {
   const [vinNumber, setVinNumber] = useState("");
   const [firstRegistration, setFirstRegistration] = useState("");
 
+  // New state to store validation errors
+  const [validationErrors, setValidationErrors] = useState({});
+
   useEffect(() => {
     setCarDetails({
       carManufacturer,
@@ -44,14 +47,40 @@ function MainDetails({ setCarDetails }) {
   ]);
 
   const handleSubmit = () => {
-    // Simple validation example
-    if (!carManufacturer || !carModel || !productionYear || !vinNumber) {
-      alert("Please fill in all required fields (Car Manufacturer, Model, Year, and VIN Number).");
+    let errors = {};
+
+    // Validation logic
+    if (!carManufacturer) errors.carManufacturer = true;
+    if (!carModel) errors.carModel = true;
+    if (!productionYear || isNaN(productionYear)) errors.productionYear = true;
+    if (!vinNumber) errors.vinNumber = true;
+    if (!mileage || isNaN(mileage)) errors.mileage = true;
+    if (!fuel) errors.fuel = true;
+    if (!displacement) errors.displacement = true;
+    if (!power || isNaN(power)) errors.power = true;
+    if (!bodyType) errors.bodyType = true;
+    if (!transmission) errors.transmission = true;
+    if (!doorsNumber || isNaN(doorsNumber)) errors.doorsNumber = true;
+    if (!seatsNumber || isNaN(seatsNumber)) errors.seatsNumber = true;
+    if (!bodyColor) errors.bodyColor = true;
+    if (!interiorColor) errors.interiorColor = true;
+    if (!firstRegistration) errors.firstRegistration = true;
+
+    // Set validation errors state
+    setValidationErrors(errors);
+
+    // If there are no errors, proceed with form submission
+    if (Object.keys(errors).length > 0) {
+      alert("Please fill in all required fields and ensure values are correct.");
       return;
     }
 
-    // If everything is valid, you could proceed to submit the data
     alert("Details submitted successfully!");
+  };
+
+  // Function to get conditional input class
+  const getInputClass = (fieldName) => {
+    return validationErrors[fieldName] ? "admin-input error" : "admin-input";
   };
 
   return (
@@ -62,80 +91,80 @@ function MainDetails({ setCarDetails }) {
         <div className="details-aligment-div">
           <div className="details-aligment-div-second">
             <span>Car manufacturer</span>
-            <input value={carManufacturer} onChange={(e) => setCarManufacturer(e.target.value)} />
+            <input className={getInputClass('carManufacturer')} value={carManufacturer} onChange={(e) => setCarManufacturer(e.target.value)} />
           </div>
           <div className="details-aligment-div-second">
             <span>Car model</span>
-            <input value={carModel} onChange={(e) => setCarModel(e.target.value)} />
+            <input className={getInputClass('carModel')} value={carModel} onChange={(e) => setCarModel(e.target.value)} />
           </div>
           <div className="details-aligment-div-second">
             <span>Production year</span>
-            <input value={productionYear} onChange={(e) => setProductionYear(e.target.value)} />
+            <input className={getInputClass('productionYear')} value={productionYear} onChange={(e) => setProductionYear(e.target.value)} />
           </div>
           <div className="details-aligment-div-second">
             <span>Mileage</span>
-            <input value={mileage} onChange={(e) => setMileage(e.target.value)} />
+            <input className={getInputClass('mileage')} value={mileage} onChange={(e) => setMileage(e.target.value)} />
           </div>
         </div>
 
         <div className="details-aligment-div">
           <div className="details-aligment-div-second">
             <span>Fuel</span>
-            <input value={fuel} onChange={(e) => setFuel(e.target.value)} />
+            <input className={getInputClass('fuel')} value={fuel} onChange={(e) => setFuel(e.target.value)} />
           </div>
           <div className="details-aligment-div-second">
             <span>Displacement</span>
-            <input value={displacement} onChange={(e) => setDisplacement(e.target.value)} />
+            <input className={getInputClass('displacement')} value={displacement} onChange={(e) => setDisplacement(e.target.value)} />
           </div>
           <div className="details-aligment-div-second">
             <span>Power</span>
-            <input value={power} onChange={(e) => setPower(e.target.value)} />
+            <input className={getInputClass('power')} value={power} onChange={(e) => setPower(e.target.value)} />
           </div>
           <div className="details-aligment-div-second">
             <span>Body type</span>
-            <input value={bodyType} onChange={(e) => setBodyType(e.target.value)} />
+            <input className={getInputClass('bodyType')} value={bodyType} onChange={(e) => setBodyType(e.target.value)} />
           </div>
         </div>
 
         <div className="details-aligment-div">
           <div className="details-aligment-div-second">
             <span>Transmission</span>
-            <input value={transmission} onChange={(e) => setTransmission(e.target.value)} />
+            <input className={getInputClass('transmission')} value={transmission} onChange={(e) => setTransmission(e.target.value)} />
           </div>
           <div className="details-aligment-div-second">
             <span>Doors number</span>
-            <input type="number" value={doorsNumber} onChange={(e) => setDoorsNumber(Number(e.target.value))} />
+            <input className={getInputClass('doorsNumber')} type="number" value={doorsNumber} onChange={(e) => setDoorsNumber(Number(e.target.value))} />
           </div>
           <div className="details-aligment-div-second">
             <span>Seats number</span>
-            <input type="number" value={seatsNumber} onChange={(e) => setSeatsNumber(Number(e.target.value))} />
+            <input className={getInputClass('seatsNumber')} type="number" value={seatsNumber} onChange={(e) => setSeatsNumber(Number(e.target.value))} />
           </div>
           <div className="details-aligment-div-second">
             <span>Interior color</span>
-            <input value={interiorColor} onChange={(e) => setInteriorColor(e.target.value)} />
+            <input className={getInputClass('interiorColor')} value={interiorColor} onChange={(e) => setInteriorColor(e.target.value)} />
           </div>
         </div>
 
         <div className="details-aligment-div">
           <div className="details-aligment-div-second">
             <span>Body color</span>
-            <input value={bodyColor} onChange={(e) => setBodyColor(e.target.value)} />
+            <input className={getInputClass('bodyColor')} value={bodyColor} onChange={(e) => setBodyColor(e.target.value)} />
           </div>
 
           <div className="details-aligment-second">
             <div className="vin-number-registration-div">
               <div className="details-aligment-div-second">
                 <span>Vin number</span>
-                <input className="input-vin-number-div" value={vinNumber} onChange={(e) => setVinNumber(e.target.value)} />
+                <input className={getInputClass('vinNumber')} value={vinNumber} onChange={(e) => setVinNumber(e.target.value)} />
               </div>
               <div className="details-aligment-div-second">
                 <span>First Registration</span>
-                <input type="date" value={firstRegistration} onChange={(e) => setFirstRegistration(e.target.value)} />
+                <input className={getInputClass('firstRegistration')} type="date" value={firstRegistration} onChange={(e) => setFirstRegistration(e.target.value)} />
               </div>
             </div>
           </div>
         </div>
-        <button onClick={handleSubmit}>Submit</button>
+        <button className="admin-upload-input" onClick={handleSubmit}>Submit</button>
       </div>
     </div>
   );

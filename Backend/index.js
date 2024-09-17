@@ -7,11 +7,19 @@ import cors from 'cors';
 
 const app = express();
 
+// List of allowed origins
+const allowedOrigins = ['http://localhost:5173', 'https://e-comerce-git-master-vadi-vasilcovans-projects.vercel.app'];
 
-
-// Enable CORS only for the specific frontend origin (localhost:5173)
+// Dynamic CORS middleware
 app.use(cors({
-    origin: 'http://localhost:5173', // Allow only this origin to access the API
+    origin: function (origin, callback) {
+        // If the origin is in the allowedOrigins list or there is no origin (e.g., mobile app or curl), allow it
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
 }));
 
 // Increase request body size limits to handle large payloads
@@ -38,4 +46,3 @@ mongoose.connect(mongoDBURL)
     .catch((error) => {
         console.log('Error connecting to the database:', error);
     });
-

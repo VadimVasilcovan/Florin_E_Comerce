@@ -1,21 +1,22 @@
-.main-details-div-parent{
+/* Existing CSS */
+.main-details-div-parent {
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.main-details-div{
+.main-details-div {
     width: 77.5rem;
 }
 
-.details-aligment-div{
+.details-aligment-div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.details-aligment-second{
+.details-aligment-second {
     width: 75%;
 }
 
@@ -27,17 +28,31 @@
 }
 
 input {
-    width: 15rem;
+   /* width: 15rem;*/
     flex-grow: 1;
 }
 
-.vin-number-registration-div{
+.vin-number-registration-div {
     display: flex;
     align-items: row;
 }
 
-.input-vin-number-div{
-   width: 34.5rem;
-   flex-grow: 1;
+.input-vin-number-div {
+    width: 34.5rem;
+    flex-grow: 1;
 }
 
+.admin-input {
+    height: 2rem;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 400;
+}
+
+.admin-upload-input {
+    margin-top: 2rem;
+}
+
+/* New CSS for error state */
+.error {
+    border: 1.5px solid red; /* Red border for invalid inputs */
+}
