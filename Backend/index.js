@@ -7,19 +7,9 @@ import cors from 'cors';
 
 const app = express();
 
-// List of allowed origins
-const allowedOrigins = ['http://localhost:5173', 'https://e-comerce-git-master-vadi-vasilcovans-projects.vercel.app'];
-
-// Dynamic CORS middleware
+// Allow all origins (not recommended for production)
 app.use(cors({
-    origin: function (origin, callback) {
-        // If the origin is in the allowedOrigins list or there is no origin (e.g., mobile app or curl), allow it
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    }
+    origin: '*', // Allow all origins
 }));
 
 // Increase request body size limits to handle large payloads
