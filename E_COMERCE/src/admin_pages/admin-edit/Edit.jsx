@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./Edit.css";
 
-function Edit({ cars }) {  // Destructuring props to get `cars`
+function Edit({ cars }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ function Edit({ cars }) {  // Destructuring props to get `cars`
   }
 
   const handleEditClick = () => {
-    navigate(`/admin/edit/${id}`);
+    navigate(`/admin/${id}`);  // Pass the correct ID to the admin page
   };
 
   return (

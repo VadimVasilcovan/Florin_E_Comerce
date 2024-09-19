@@ -3,22 +3,18 @@ import "./addingPictures.css";
 
 function AddingPictures({ setPictures, pictures }) {
   const [mainImage, setMainImage] = useState(pictures.mainImage || "");
-const [secondaryImages, setSecondaryImages] = useState(pictures.secondaryImages || []);
+  const [secondaryImages, setSecondaryImages] = useState(pictures.secondaryImages || []);
 
-
-useEffect(() => {
-  console.log("Updating pictures:", { main: mainImage, secondary: secondaryImages });
-  setPictures({ main: mainImage, secondary: secondaryImages });
-}, [mainImage, secondaryImages, setPictures]);
-
+  useEffect(() => {
+    setPictures({ mainImage, secondaryImages });
+  }, [mainImage, secondaryImages, setPictures]);
 
   const handleImageUpload = (event, setImageFunction) => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        console.log(reader.result); // Log to ensure the base64 string is valid
-        setImageFunction(reader.result); // Convert image to base64
+        setImageFunction(reader.result);
       };
       reader.readAsDataURL(file);
     }
@@ -65,7 +61,7 @@ useEffect(() => {
           <img 
             className="main-img-upload" 
             alt="Main" 
-            src={mainImage || 'placeholder-main.png'}  // Main image preview
+            src={mainImage || 'placeholder-main.png'} // Ensure placeholder image is present
           />
         </div>
         <div className="secondary-img-upload-div">
@@ -74,7 +70,7 @@ useEffect(() => {
               key={index} 
               className="secondary-img-upload" 
               alt={`Secondary ${index + 1}`} 
-              src={image}  // Secondary image preview
+              src={image} // Ensure secondary images are correctly displayed
             />
           ))}
         </div>

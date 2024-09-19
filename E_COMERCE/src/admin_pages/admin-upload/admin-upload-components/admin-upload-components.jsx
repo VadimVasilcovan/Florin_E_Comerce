@@ -10,7 +10,7 @@ import Vector from "../admin-upload-components/assets/Vector.png";
 import Group from "../admin-upload-components/assets/Group.png";
 
 function Admin() {
-  const { id } = useParams(); // Get ID from URL parameters if available
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const [carDetails, setCarDetails] = useState({});
@@ -21,28 +21,59 @@ function Admin() {
     mainImage: "",
     secondaryImages: [],
   });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:9990/cars/${id}`)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data) {
-            setCarDetails(data);
-            setExteriorFeatures(data.features?.exterior || []);
-            setInteriorFeatures(data.features?.interior || []);
-            setPrice(data.price || "");
-            setPictures({
-              mainImage: data.pictures?.main || "",
-              secondaryImages: data.pictures?.secondary || [],
-            });
-          } else {
-            console.error("Received unexpected data format:", data);
-          }
-        })
-        .catch((error) => console.error("Error fetching car details:", error));
+      const savedCar = localStorage.getItem(`car_${id}`);
+      if (savedCar) {
+        const carData = JSON.parse(savedCar);
+        setCarDetails(carData);
+        setExteriorFeatures(carData.features?.exterior || []);
+        setInteriorFeatures(carData.features?.interior || []);
+        setPrice(carData.price || "");
+        setPictures({
+          mainImage: carData.pictures?.mainImage || "",
+          secondaryImages: carData.pictures?.secondaryImages || [],
+        });
+        setLoading(false);
+      } else {
+        fetchCarDetails();
+      }
+    } else {
+      setLoading(false);
     }
   }, [id]);
+
+  const fetchCarDetails = () => {
+    setLoading(true);
+    fetch(`http://localhost:9990/cars/${id}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch car details");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Fetched car data:", data); // Debugging
+        setCarDetails(data);
+        setExteriorFeatures(data.features?.exterior || []);
+        setInteriorFeatures(data.features?.interior || []);
+        setPrice(data.price || "");
+        setPictures({
+          mainImage: data.pictures?.mainImage || "",
+          secondaryImages: data.pictures?.secondaryImages || [],
+        });
+        localStorage.setItem(`car_${id}`, JSON.stringify(data));
+      })
+      .catch((error) => {
+        setError("Error fetching car details: " + error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
   const handlePublish = () => {
     const carData = {
@@ -55,10 +86,8 @@ function Admin() {
       price,
     };
 
-    const method = id ? "PUT" : "POST"; // Use PUT for editing and POST for adding
-    const url = id
-      ? (`http://localhost:9990/cars/${id}`)
-      : ("http://localhost:9990/cars"); // URL for API call
+    const method = id ? "PUT" : "POST";
+    const url = id ? `http://localhost:9990/cars/${id}` : "http://localhost:9990/cars";
 
     fetch(url, {
       method,
@@ -75,19 +104,33 @@ function Admin() {
         }
       })
       .then((data) => {
-        console.log("Success:", data);
-        navigate("/admin/all"); // Redirect after success
+        localStorage.setItem(`car_${id}`, JSON.stringify(data));
+        navigate("/admin/all");
       })
       .catch((error) => {
-        console.error("Error:", error);
+        setError("Error publishing vehicle: " + error.message);
       });
   };
+
+  if (loading) {
+    return <div>Loading car details...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <>
       <div className="admin-upload-page-main">
-        <AddingPictures setPictures={setPictures} pictures={pictures} />
-        <MainDetails setCarDetails={setCarDetails} carDetails={carDetails} />
+        <AddingPictures 
+          setPictures={setPictures} 
+          pictures={pictures} 
+        />
+        <MainDetails 
+          setCarDetails={setCarDetails} 
+          carDetails={carDetails} 
+        />
         <ExteriorAndPerformance
           setExteriorFeatures={setExteriorFeatures}
           exteriorFeatures={exteriorFeatures}
@@ -96,10 +139,10 @@ function Admin() {
           setInteriorFeatures={setInteriorFeatures}
           interiorFeatures={interiorFeatures}
         />
-        <PriceAndPublish
-          setPrice={setPrice}
-          price={price}
-          onPublish={handlePublish}
+        <PriceAndPublish 
+          setPrice={setPrice} 
+          price={price} 
+          onPublish={handlePublish} 
         />
       </div>
       <div className="footer-admin-div">
