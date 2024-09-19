@@ -1,28 +1,33 @@
 import React, { useState, useEffect } from "react";
 import "./addingPictures.css";
 
-function AddingPictures({ setPictures }) {
-  const [mainImage, setMainImage] = useState('');  // State for main image
-  const [secondaryImages, setSecondaryImages] = useState([]);  // State for secondary images
+function AddingPictures({ setPictures, pictures }) {
+  const [mainImage, setMainImage] = useState(pictures.mainImage || "");
+const [secondaryImages, setSecondaryImages] = useState(pictures.secondaryImages || []);
 
-  // Handle the upload of an image
+
+useEffect(() => {
+  console.log("Updating pictures:", { main: mainImage, secondary: secondaryImages });
+  setPictures({ main: mainImage, secondary: secondaryImages });
+}, [mainImage, secondaryImages, setPictures]);
+
+
   const handleImageUpload = (event, setImageFunction) => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
+        console.log(reader.result); // Log to ensure the base64 string is valid
         setImageFunction(reader.result); // Convert image to base64
       };
       reader.readAsDataURL(file);
     }
   };
 
-  // For main image upload
   const handleMainImageUpload = (event) => {
     handleImageUpload(event, setMainImage);
   };
 
-  // For secondary images upload
   const handleSecondaryImageUpload = (event) => {
     handleImageUpload(event, (newImage) => {
       setSecondaryImages((prevImages) => [
@@ -31,14 +36,6 @@ function AddingPictures({ setPictures }) {
       ]);
     });
   };
-
-  // Pass the pictures data (main + secondary) to the parent component whenever they change
-  useEffect(() => {
-    setPictures({ 
-      main: mainImage,  // Ensure the main image is passed as `main`
-      secondary: secondaryImages  // Ensure secondary images are passed as `secondary`
-    });
-  }, [mainImage, secondaryImages, setPictures]);
 
   return (
     <div className="adding-pictures-div">

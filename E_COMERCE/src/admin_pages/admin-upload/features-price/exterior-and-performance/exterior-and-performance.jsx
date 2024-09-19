@@ -1,50 +1,46 @@
 import React, { useState, useEffect } from "react";
 import "./exterior-and-performance.css";
 
-function ExteriorAndPerformance({ setExteriorFeatures }) {
+function ExteriorAndPerformance({ setExteriorFeatures, exteriorFeatures }) {
   const [inputValue, setInputValue] = useState("");
-  const [values, setValues] = useState([]);
-
-  const handleButtonClick = () => {
-    if (inputValue.trim() !== "") {
-      setValues([...values, inputValue]);
-      setInputValue("");
-    }
-  };
-
-  const handleDelete = (indexToDelete) => {
-    setValues(values.filter((_, index) => index !== indexToDelete));
-  };
+  const [values, setValues] = useState(exteriorFeatures || []);
 
   useEffect(() => {
     setExteriorFeatures(values);
   }, [values, setExteriorFeatures]);
 
-    return (
-        <div className="main-features-div">
-            <div className="secondary-features-div">   
-                <h1>3: Features</h1>
-                <hr />
-                <span>Exterior & performance</span>
-                <div>
-                    <input
-                        type="text"
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
-                    />
-                    <button className="add-button" onClick={handleButtonClick}>+</button>
-                </div>
-                <div className="additional-info">
-                    {values.map((value, index) => (
-                        <p className="additional-info-p" key={index}>
-                            {value}
-                            <button className="additional-info-delete-btn" onClick={() => handleDelete(index)}>Delete</button>
-                        </p>
-                    ))}
-                </div>
-            </div>
-        </div>
-    );
+  const handleAddFeature = () => {
+    if (inputValue.trim() !== "") {
+      setValues((prevValues) => [...prevValues, inputValue]);
+      setInputValue("");
+    }
+  };
+
+  const handleRemoveFeature = (index) => {
+    setValues((prevValues) => prevValues.filter((_, i) => i !== index));
+  };
+
+  return (
+    <div className="exterior-and-performance-div">
+      <h1>3: Exterior and Performance</h1>
+      <hr />
+      <input
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        placeholder="Add feature"
+      />
+      <button onClick={handleAddFeature}>Add</button>
+      <ul>
+        {values.map((feature, index) => (
+          <li key={index}>
+            {feature}
+            <button onClick={() => handleRemoveFeature(index)}>Remove</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default ExteriorAndPerformance;

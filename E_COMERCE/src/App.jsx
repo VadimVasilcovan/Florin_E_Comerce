@@ -6,7 +6,6 @@ import OurCarsPage from './our-cars-page/our-cars-page-compenents/our-cars-page-
 import React, { useState, useEffect } from 'react';
 import Detail from './detail_page/Detail';
 import Admin from './admin_pages/admin-upload/admin-upload-components/admin-upload-components';
-import Edit from './admin_pages/admin-edit/Edit.jsx';
 import AllCars from './admin_pages/admin-allcars/AllCars.jsx';
 
 function App() {
@@ -14,29 +13,27 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    fetch('http://localhost:9990/cars') // URL to fetch data from backend
+    fetch('http://localhost:9990/cars')
       .then(response => response.json())
       .then(data => {
-        console.log('Fetched cars data:', data); // Log the fetched data
-        setCars(data); // Update state with fetched data
+        console.log('Fetched cars data:', data);
+        setCars(data);
       })
-      .catch(error => console.error('Error fetching cars:', error)); // Error handling
+      .catch(error => console.error('Error fetching cars:', error));
   }, []);
 
-  // Updated condition to hide navbar on /admin, /admin/all, and /cars/:id paths
   const showNavbar = !location.pathname.startsWith('/admin') && !location.pathname.startsWith('/cars/');
 
   return (
     <>
       {showNavbar && <NavbarComponent />}
-      
       <div>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/cars" element={<OurCarsPage cars={cars} />} />
-          <Route path="/admin" element={<Admin />} /> {/* Admin route */}
-          <Route path="/admin/all" element={<AllCars cars={cars}/>}/>
-          <Route path="/admin/edit/:id" element={<Edit cars={cars} />} /> {/* Edit route */}
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/all" element={<AllCars cars={cars} />} />
+          <Route path="/admin/:id" element={<Admin />} /> {/* Reuse Admin component */}
           <Route path="/cars/:id" element={<Detail cars={cars} />} />
         </Routes>
       </div>

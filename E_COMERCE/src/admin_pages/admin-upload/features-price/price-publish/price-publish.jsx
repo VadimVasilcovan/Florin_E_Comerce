@@ -1,38 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./price-publish.css";
 
-function PriceAndPublish({ setPrice, onPublish }) {
-  const [inputValue, setInputValue] = useState("");
+function PriceAndPublish({ setPrice, price, onPublish }) {
+  const [inputValue, setInputValue] = useState(price || "");
 
-  const handleButtonClick = () => {
-    if (inputValue.trim() !== "") {
-      setPrice(inputValue);
-    }
-  };
+  useEffect(() => {
+    setPrice(inputValue);
+  }, [inputValue, setPrice]);
 
-  const handlePublishClick = () => {
-    onPublish(); // Trigger the publish action
+  const handlePublish = () => {
+    onPublish();
   };
 
   return (
-    <div className="price-and-publish">
-      <div className="admin-price-div">
-        <h1>4: Price</h1>
-        <hr />
-        <div className="price-input-div">
-          <input
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-          />
-          <button className="add-button" onClick={handleButtonClick}>
-            +
-          </button>
-        </div>
+    <div className="price-and-publish-div">
+      <h1>5: Price and Publish</h1>
+      <hr />
+      <div className="price-div">
+        <label>Price</label>
+        <input
+          type="number"
+          value={inputValue}
+          onChange={(e) => {
+            setInputValue(e.target.value);
+            setPrice(e.target.value);
+          }}
+          placeholder="Enter price"
+        />
       </div>
-      <div className="publish-button-div">
-        <button className="publish-button" onClick={handlePublishClick}>
-          Publish vehicle
+      <div className="publish-div">
+        <button className="publish-btn" onClick={handlePublish}>
+          Publish
         </button>
       </div>
     </div>

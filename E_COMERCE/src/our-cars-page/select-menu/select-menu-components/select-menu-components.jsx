@@ -81,47 +81,48 @@ function SelectMenu({ cars, onFilterChange }) {
 
     // Function to filter cars based on selected criteria
     function filterData(cars) {
-        let filteredData = cars;
+    let filteredData = cars;
 
-        if (selectedManufacturer) {
-            filteredData = filteredData.filter(car => car.carManufacturer === selectedManufacturer);
-        }
-        if (selectedModel) {
-            filteredData = filteredData.filter(car => car.carModel === selectedModel);
-        }
-        if (selectedColor) {
-            filteredData = filteredData.filter(car => car.bodyColor === selectedColor);
-        }
-        if (selectedBodyType) {
-            filteredData = filteredData.filter(car => car.bodyType === selectedBodyType);
-        }
-        if (priceRange.min !== null || priceRange.max !== null) {
-            filteredData = filteredData.filter(car => {
-                const price = car.price;
-                return (priceRange.min === null || price >= priceRange.min) &&
-                       (priceRange.max === null || price <= priceRange.max);
-            });
-        }
-        if (selectedMileage) {
-            filteredData = filteredData.filter(car => {
-                const mileage = car.mileage;
-                return (selectedMileage.min === null || mileage >= selectedMileage.min) &&
-                       (selectedMileage.max === null || mileage <= selectedMileage.max);
-            });
-        }
-        if (selectedProductionYear) {
-            filteredData = filteredData.filter(car => {
-                const year = car.productionYear;
-                return (selectedProductionYear.min === null || year >= selectedProductionYear.min) &&
-                       (selectedProductionYear.max === null || year <= selectedProductionYear.max);
-            });
-        }
-        if (selectedFuel) {
-            filteredData = filteredData.filter(car => car.fuel === selectedFuel);
-        }
-
-        return filteredData;
+    if (selectedManufacturer) {
+        filteredData = filteredData.filter(car => car.carManufacturer?.toLowerCase() === selectedManufacturer.toLowerCase());
     }
+    if (selectedModel) {
+        filteredData = filteredData.filter(car => car.carModel?.toLowerCase() === selectedModel.toLowerCase());
+    }
+    if (selectedColor) {
+        filteredData = filteredData.filter(car => car.bodyColor?.toLowerCase() === selectedColor.toLowerCase());
+    }
+    if (selectedBodyType) {
+        filteredData = filteredData.filter(car => car.bodyType?.toLowerCase() === selectedBodyType.toLowerCase());
+    }
+    if (priceRange.min !== null || priceRange.max !== null) {
+        filteredData = filteredData.filter(car => {
+            const price = car.price || 0;  // Ensure price is not undefined
+            return (priceRange.min === null || price >= priceRange.min) &&
+                   (priceRange.max === null || price <= priceRange.max);
+        });
+    }
+    if (selectedMileage) {
+        filteredData = filteredData.filter(car => {
+            const mileage = car.mileage || 0;  // Ensure mileage is not undefined
+            return (selectedMileage.min === null || mileage >= selectedMileage.min) &&
+                   (selectedMileage.max === null || mileage <= selectedMileage.max);
+        });
+    }
+    if (selectedProductionYear) {
+        filteredData = filteredData.filter(car => {
+            const year = car.productionYear || 0;  // Ensure productionYear is not undefined
+            return (selectedProductionYear.min === null || year >= selectedProductionYear.min) &&
+                   (selectedProductionYear.max === null || year <= selectedProductionYear.max);
+        });
+    }
+    if (selectedFuel) {
+        filteredData = filteredData.filter(car => car.fuel?.toLowerCase() === selectedFuel.toLowerCase());
+    }
+
+    return filteredData;
+}
+
 
     // Function to reset all filters
     const resetFilters = () => {

@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "./mainDetails.css";
 
-function MainDetails({ setCarDetails }) {
-  const [carManufacturer, setCarManufacturer] = useState("");
-  const [carModel, setCarModel] = useState("");
-  const [productionYear, setProductionYear] = useState("");
-  const [mileage, setMileage] = useState("");
-  const [fuel, setFuel] = useState("");
-  const [displacement, setDisplacement] = useState("");
-  const [power, setPower] = useState("");
-  const [bodyType, setBodyType] = useState("");
-  const [transmission, setTransmission] = useState("");
-  const [doorsNumber, setDoorsNumber] = useState("");
-  const [seatsNumber, setSeatsNumber] = useState("");
-  const [bodyColor, setBodyColor] = useState("");
-  const [interiorColor, setInteriorColor] = useState("");
-  const [vinNumber, setVinNumber] = useState("");
-  const [firstRegistration, setFirstRegistration] = useState("");
+function MainDetails({ setCarDetails, carDetails }) {
+  const [carManufacturer, setCarManufacturer] = useState(carDetails.carManufacturer || "");
+  const [carModel, setCarModel] = useState(carDetails.carModel || "");
+  const [productionYear, setProductionYear] = useState(carDetails.productionYear || "");
+  const [mileage, setMileage] = useState(carDetails.mileage || "");
+  const [fuel, setFuel] = useState(carDetails.fuel || "");
+  const [displacement, setDisplacement] = useState(carDetails.displacement || "");
+  const [power, setPower] = useState(carDetails.power || "");
+  const [bodyType, setBodyType] = useState(carDetails.bodyType || "");
+  const [transmission, setTransmission] = useState(carDetails.transmission || "");
+  const [doorsNumber, setDoorsNumber] = useState(carDetails.doorsNumber || "");
+  const [seatsNumber, setSeatsNumber] = useState(carDetails.seatsNumber || "");
+  const [bodyColor, setBodyColor] = useState(carDetails.bodyColor || "");
+  const [interiorColor, setInteriorColor] = useState(carDetails.interiorColor || "");
+  const [vinNumber, setVinNumber] = useState(carDetails.vinNumber || "");
+  const [firstRegistration, setFirstRegistration] = useState(carDetails.firstRegistration || "");
 
-  // New state to store validation errors
   const [validationErrors, setValidationErrors] = useState({});
 
   useEffect(() => {
@@ -49,7 +48,6 @@ function MainDetails({ setCarDetails }) {
   const handleSubmit = () => {
     let errors = {};
 
-    // Validation logic
     if (!carManufacturer) errors.carManufacturer = true;
     if (!carModel) errors.carModel = true;
     if (!productionYear || isNaN(productionYear)) errors.productionYear = true;
@@ -66,10 +64,8 @@ function MainDetails({ setCarDetails }) {
     if (!interiorColor) errors.interiorColor = true;
     if (!firstRegistration) errors.firstRegistration = true;
 
-    // Set validation errors state
     setValidationErrors(errors);
 
-    // If there are no errors, proceed with form submission
     if (Object.keys(errors).length > 0) {
       alert("Please fill in all required fields and ensure values are correct.");
       return;
@@ -78,7 +74,6 @@ function MainDetails({ setCarDetails }) {
     alert("Details submitted successfully!");
   };
 
-  // Function to get conditional input class
   const getInputClass = (fieldName) => {
     return validationErrors[fieldName] ? "admin-input error" : "admin-input";
   };
@@ -133,38 +128,37 @@ function MainDetails({ setCarDetails }) {
           </div>
           <div className="details-aligment-div-second">
             <span>Doors number</span>
-            <input className={getInputClass('doorsNumber')} type="number" value={doorsNumber} onChange={(e) => setDoorsNumber(Number(e.target.value))} />
+            <input className={getInputClass('doorsNumber')} value={doorsNumber} onChange={(e) => setDoorsNumber(e.target.value)} />
           </div>
           <div className="details-aligment-div-second">
             <span>Seats number</span>
-            <input className={getInputClass('seatsNumber')} type="number" value={seatsNumber} onChange={(e) => setSeatsNumber(Number(e.target.value))} />
+            <input className={getInputClass('seatsNumber')} value={seatsNumber} onChange={(e) => setSeatsNumber(e.target.value)} />
           </div>
           <div className="details-aligment-div-second">
-            <span>Interior color</span>
-            <input className={getInputClass('interiorColor')} value={interiorColor} onChange={(e) => setInteriorColor(e.target.value)} />
+            <span>Body color</span>
+            <input className={getInputClass('bodyColor')} value={bodyColor} onChange={(e) => setBodyColor(e.target.value)} />
           </div>
         </div>
 
         <div className="details-aligment-div">
           <div className="details-aligment-div-second">
-            <span>Body color</span>
-            <input className={getInputClass('bodyColor')} value={bodyColor} onChange={(e) => setBodyColor(e.target.value)} />
+            <span>Interior color</span>
+            <input className={getInputClass('interiorColor')} value={interiorColor} onChange={(e) => setInteriorColor(e.target.value)} />
           </div>
-
-          <div className="details-aligment-second">
-            <div className="vin-number-registration-div">
-              <div className="details-aligment-div-second">
-                <span>Vin number</span>
-                <input className={getInputClass('vinNumber')} value={vinNumber} onChange={(e) => setVinNumber(e.target.value)} />
-              </div>
-              <div className="details-aligment-div-second">
-                <span>First Registration</span>
-                <input className={getInputClass('firstRegistration')} type="date" value={firstRegistration} onChange={(e) => setFirstRegistration(e.target.value)} />
-              </div>
-            </div>
+          <div className="details-aligment-div-second">
+            <span>VIN number</span>
+            <input className={getInputClass('vinNumber')} value={vinNumber} onChange={(e) => setVinNumber(e.target.value)} />
+          </div>
+          <div className="details-aligment-div-second">
+            <span>First registration</span>
+            <input className={getInputClass('firstRegistration')} value={firstRegistration} onChange={(e) => setFirstRegistration(e.target.value)} />
           </div>
         </div>
-        <button className="admin-upload-input" onClick={handleSubmit}>Submit</button>
+      </div>
+      <div className="btn-submit">
+        <button className="next-btn" onClick={handleSubmit}>
+          Next step
+        </button>
       </div>
     </div>
   );

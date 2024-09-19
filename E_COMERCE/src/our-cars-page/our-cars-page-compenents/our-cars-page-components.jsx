@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import CarCardHolder from "../car-info-card-holder/car-info-card-holder-components/car-info-card-holder-components";
 import SelectionContainer from "../your-selections/atoms/selection-container/selection-container";
 import './our-cars-page-components.css';
@@ -10,7 +11,7 @@ import FooterComponent from "../../home-page/footer/footer-component/footer-comp
 
 function OurCarsPage({ cars }) {
     const [currentPage, setCurrentPage] = useState(1);
-    const [filteredCars, setFilteredCars] = useState(cars); // State for filtered cars
+    const [filteredCars, setFilteredCars] = useState(cars); 
     const [selectedFilters, setSelectedFilters] = useState({
         manufacturer: null,
         model: null,
@@ -20,10 +21,33 @@ function OurCarsPage({ cars }) {
         mileage: null,
         productionYear: null,
         fuel: null
-    }); // State for selected filters
+    }); 
     const carsPerPage = 6;
 
-    // Calculate the indexes for slicing the cars array
+    const location = useLocation(); 
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        const searchTerm = searchParams.get('search')?.toLowerCase(); 
+    
+        if (searchTerm) {
+            // Split the search term into individual keywords
+            const keywords = searchTerm.split(' ').filter(Boolean);
+            
+            const filtered = cars.filter(car => {
+                // Check if all keywords are present in either manufacturer or model
+                return keywords.every(keyword => 
+                    (car.carManufacturer?.toLowerCase().includes(keyword) || 
+                     car.carModel?.toLowerCase().includes(keyword))
+                );
+            });
+            
+            setFilteredCars(filtered); 
+        } else {
+            setFilteredCars(cars); 
+        }
+    }, [location.search, cars]);
+
     const indexOfLastCar = currentPage * carsPerPage;
     const indexOfFirstCar = indexOfLastCar - carsPerPage;
     const currentCars = filteredCars.slice(indexOfFirstCar, indexOfLastCar);
@@ -35,8 +59,8 @@ function OurCarsPage({ cars }) {
 
     const handleFilterChange = useCallback((filteredCars, filters) => {
         setFilteredCars(filteredCars);
-        setSelectedFilters(filters); // Update selected filters
-        setCurrentPage(1); // Reset to first page on filter change
+        setSelectedFilters(filters); 
+        setCurrentPage(1); 
     }, []);
 
     return (

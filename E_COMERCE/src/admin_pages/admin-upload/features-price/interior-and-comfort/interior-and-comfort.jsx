@@ -1,48 +1,46 @@
 import React, { useState, useEffect } from "react";
 import "./interior-and-comfort.css";
 
-function InteriorAndComfort({ setInteriorFeatures }) {
+function InteriorAndComfort({ setInteriorFeatures, interiorFeatures }) {
   const [inputValue, setInputValue] = useState("");
-  const [values, setValues] = useState([]);
-
-  const handleButtonClick = () => {
-    if (inputValue.trim() !== "") {
-      setValues([...values, inputValue]);
-      setInputValue("");
-    }
-  };
-
-  const handleDelete = (indexToDelete) => {
-    setValues(values.filter((_, index) => index !== indexToDelete));
-  };
+  const [values, setValues] = useState(interiorFeatures || []);
 
   useEffect(() => {
     setInteriorFeatures(values);
   }, [values, setInteriorFeatures]);
 
-    return (
-        <div className="main-features-div">
-            <div className="secondary-features-div">
-                <span>Interior & comfort</span>
-                <div>
-                    <input
-                        type="text"
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
-                    />
-                    <button className="add-button" onClick={handleButtonClick}>+</button>
-                </div>
-                <div className="additional-info">
-                    {values.map((value, index) => (
-                        <p className="additional-info-p" key={index}>
-                            {value}
-                            <button className="additional-info-delete-btn" onClick={() => handleDelete(index)}>Delete</button>
-                        </p>
-                    ))}
-                </div>
-            </div>
-        </div>
-    );
+  const handleAddFeature = () => {
+    if (inputValue.trim() !== "") {
+      setValues((prevValues) => [...prevValues, inputValue]);
+      setInputValue("");
+    }
+  };
+
+  const handleRemoveFeature = (index) => {
+    setValues((prevValues) => prevValues.filter((_, i) => i !== index));
+  };
+
+  return (
+    <div className="interior-and-comfort-div">
+      <h1>4: Interior and Comfort</h1>
+      <hr />
+      <input
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        placeholder="Add feature"
+      />
+      <button onClick={handleAddFeature}>Add</button>
+      <ul>
+        {values.map((feature, index) => (
+          <li key={index}>
+            {feature}
+            <button onClick={() => handleRemoveFeature(index)}>Remove</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default InteriorAndComfort;
