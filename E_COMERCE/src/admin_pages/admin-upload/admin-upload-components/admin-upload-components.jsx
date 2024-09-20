@@ -18,8 +18,8 @@ function Admin() {
   const [interiorFeatures, setInteriorFeatures] = useState([]);
   const [price, setPrice] = useState("");
   const [pictures, setPictures] = useState({
-    mainImage: "",
-    secondaryImages: [],
+    main: "",
+    others: [],
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -34,8 +34,8 @@ function Admin() {
         setInteriorFeatures(carData.features?.interior || []);
         setPrice(carData.price || "");
         setPictures({
-          mainImage: carData.pictures?.mainImage || "",
-          secondaryImages: carData.pictures?.secondaryImages || [],
+          main: carData.pictures?.main || "",
+          others: carData.pictures?.others || [],
         });
         setLoading(false);
       } else {
@@ -56,14 +56,13 @@ function Admin() {
         return response.json();
       })
       .then((data) => {
-        console.log("Fetched car data:", data); // Debugging
         setCarDetails(data);
         setExteriorFeatures(data.features?.exterior || []);
         setInteriorFeatures(data.features?.interior || []);
         setPrice(data.price || "");
         setPictures({
-          mainImage: data.pictures?.mainImage || "",
-          secondaryImages: data.pictures?.secondaryImages || [],
+          main: data.pictures?.main || "",
+          others: data.pictures?.others || [],
         });
         localStorage.setItem(`car_${id}`, JSON.stringify(data));
       })

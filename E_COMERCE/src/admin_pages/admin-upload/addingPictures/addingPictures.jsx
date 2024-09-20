@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import "./addingPictures.css";
 
 function AddingPictures({ setPictures, pictures }) {
-  const [mainImage, setMainImage] = useState(pictures.mainImage || "");
-  const [secondaryImages, setSecondaryImages] = useState(pictures.secondaryImages || []);
+  const [main, setMain] = useState(pictures.main || "");
+  const [others, setOthers] = useState(pictures.others || []);
 
   useEffect(() => {
-    setPictures({ mainImage, secondaryImages });
-  }, [mainImage, secondaryImages, setPictures]);
+    setPictures({ main, others });
+  }, [main, others, setPictures]);
 
   const handleImageUpload = (event, setImageFunction) => {
     const file = event.target.files[0];
@@ -21,12 +21,12 @@ function AddingPictures({ setPictures, pictures }) {
   };
 
   const handleMainImageUpload = (event) => {
-    handleImageUpload(event, setMainImage);
+    handleImageUpload(event, setMain);
   };
 
   const handleSecondaryImageUpload = (event) => {
     handleImageUpload(event, (newImage) => {
-      setSecondaryImages((prevImages) => [
+      setOthers((prevImages) => [
         ...prevImages.slice(0, 4), // Limit to 4 images
         newImage,
       ]);
@@ -61,11 +61,11 @@ function AddingPictures({ setPictures, pictures }) {
           <img 
             className="main-img-upload" 
             alt="Main" 
-            src={mainImage || 'placeholder-main.png'} // Ensure placeholder image is present
+            src={main || 'placeholder-main.png'} // Ensure placeholder image is present
           />
         </div>
         <div className="secondary-img-upload-div">
-          {secondaryImages.slice(0, 4).map((image, index) => (
+          {others.slice(0, 4).map((image, index) => (
             <img 
               key={index} 
               className="secondary-img-upload" 
