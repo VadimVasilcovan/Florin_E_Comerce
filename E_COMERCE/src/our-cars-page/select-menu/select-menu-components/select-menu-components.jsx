@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import "./select-menu-components.css";
 import Manufacturer from "../atoms/manufacturer-select/manufacturer-select";
 import SelectModel from "../atoms/model-select/model-select";
@@ -24,9 +24,9 @@ function SelectMenu({ cars, onFilterChange }) {
     const [filteredColors, setFilteredColors] = useState([]);
     const [filteredBodyTypes, setFilteredBodyTypes] = useState([]);
 
-    // Handle changes and filter data
+    // Apply filters to cars whenever the selected criteria change
     useEffect(() => {
-        const filteredCars = filterData(cars);
+        const filteredCars = filterData(cars); // Apply filter logic to cars
         const filters = {
             manufacturer: selectedManufacturer,
             model: selectedModel,
@@ -37,7 +37,10 @@ function SelectMenu({ cars, onFilterChange }) {
             productionYear: selectedProductionYear,
             fuel: selectedFuel
         };
-        onFilterChange(filteredCars, filters); // Pass the filters along with filtered cars
+
+        console.log("Filters applied:", filters);  // Log current filters
+        console.log("Filtered cars:", filteredCars);  // Log filtered cars
+        onFilterChange(filteredCars, filters);  // Pass filtered cars and filters to parent
     }, [
         selectedManufacturer,
         selectedModel,
@@ -48,10 +51,10 @@ function SelectMenu({ cars, onFilterChange }) {
         selectedProductionYear,
         selectedFuel,
         cars,
-        onFilterChange,
+        onFilterChange
     ]);
 
-    // Filter cars based on selected criteria
+    // Filter models, colors, and body types when a manufacturer is selected
     useEffect(() => {
         if (selectedManufacturer) {
             const filtered = cars.filter(car => car.carManufacturer === selectedManufacturer);
@@ -65,6 +68,7 @@ function SelectMenu({ cars, onFilterChange }) {
         }
     }, [selectedManufacturer, cars]);
 
+    // Further filter colors and body types when a model is selected
     useEffect(() => {
         if (selectedModel) {
             const filtered = cars
@@ -81,48 +85,47 @@ function SelectMenu({ cars, onFilterChange }) {
 
     // Function to filter cars based on selected criteria
     function filterData(cars) {
-    let filteredData = cars;
+        let filteredData = cars;
 
-    if (selectedManufacturer) {
-        filteredData = filteredData.filter(car => car.carManufacturer?.toLowerCase() === selectedManufacturer.toLowerCase());
-    }
-    if (selectedModel) {
-        filteredData = filteredData.filter(car => car.carModel?.toLowerCase() === selectedModel.toLowerCase());
-    }
-    if (selectedColor) {
-        filteredData = filteredData.filter(car => car.bodyColor?.toLowerCase() === selectedColor.toLowerCase());
-    }
-    if (selectedBodyType) {
-        filteredData = filteredData.filter(car => car.bodyType?.toLowerCase() === selectedBodyType.toLowerCase());
-    }
-    if (priceRange.min !== null || priceRange.max !== null) {
-        filteredData = filteredData.filter(car => {
-            const price = car.price || 0;  // Ensure price is not undefined
-            return (priceRange.min === null || price >= priceRange.min) &&
-                   (priceRange.max === null || price <= priceRange.max);
-        });
-    }
-    if (selectedMileage) {
-        filteredData = filteredData.filter(car => {
-            const mileage = car.mileage || 0;  // Ensure mileage is not undefined
-            return (selectedMileage.min === null || mileage >= selectedMileage.min) &&
-                   (selectedMileage.max === null || mileage <= selectedMileage.max);
-        });
-    }
-    if (selectedProductionYear) {
-        filteredData = filteredData.filter(car => {
-            const year = car.productionYear || 0;  // Ensure productionYear is not undefined
-            return (selectedProductionYear.min === null || year >= selectedProductionYear.min) &&
-                   (selectedProductionYear.max === null || year <= selectedProductionYear.max);
-        });
-    }
-    if (selectedFuel) {
-        filteredData = filteredData.filter(car => car.fuel?.toLowerCase() === selectedFuel.toLowerCase());
-    }
+        if (selectedManufacturer) {
+            filteredData = filteredData.filter(car => car.carManufacturer?.toLowerCase() === selectedManufacturer.toLowerCase());
+        }
+        if (selectedModel) {
+            filteredData = filteredData.filter(car => car.carModel?.toLowerCase() === selectedModel.toLowerCase());
+        }
+        if (selectedColor) {
+            filteredData = filteredData.filter(car => car.bodyColor?.toLowerCase() === selectedColor.toLowerCase());
+        }
+        if (selectedBodyType) {
+            filteredData = filteredData.filter(car => car.bodyType?.toLowerCase() === selectedBodyType.toLowerCase());
+        }
+        if (priceRange.min !== null || priceRange.max !== null) {
+            filteredData = filteredData.filter(car => {
+                const price = car.price || 0;  // Ensure price is not undefined
+                return (priceRange.min === null || price >= priceRange.min) &&
+                    (priceRange.max === null || price <= priceRange.max);
+            });
+        }
+        if (selectedMileage) {
+            filteredData = filteredData.filter(car => {
+                const mileage = car.mileage || 0;  // Ensure mileage is not undefined
+                return (selectedMileage.min === null || mileage >= selectedMileage.min) &&
+                    (selectedMileage.max === null || mileage <= selectedMileage.max);
+            });
+        }
+        if (selectedProductionYear) {
+            filteredData = filteredData.filter(car => {
+                const year = car.productionYear || 0;  // Ensure productionYear is not undefined
+                return (selectedProductionYear.min === null || year >= selectedProductionYear.min) &&
+                    (selectedProductionYear.max === null || year <= selectedProductionYear.max);
+            });
+        }
+        if (selectedFuel) {
+            filteredData = filteredData.filter(car => car.fuel?.toLowerCase() === selectedFuel.toLowerCase());
+        }
 
-    return filteredData;
-}
-
+        return filteredData;
+    }
 
     // Function to reset all filters
     const resetFilters = () => {
@@ -134,9 +137,13 @@ function SelectMenu({ cars, onFilterChange }) {
         setSelectedMileage(null);
         setSelectedProductionYear(null);
         setSelectedFuel(null);
+
+        // Also reset filtered lists
         setFilteredModels([]);
         setFilteredColors([]);
         setFilteredBodyTypes([]);
+
+        console.log("Filters reset");  // Log filter reset action
         onFilterChange(cars, {
             manufacturer: null,
             model: null,
@@ -152,48 +159,48 @@ function SelectMenu({ cars, onFilterChange }) {
     return (
         <div className="main-container">
             <div className="selection-menu-container-div">
-                <Manufacturer 
-                    cars={cars} 
-                    selected={selectedManufacturer} 
+                <Manufacturer
+                    cars={cars}
+                    selected={selectedManufacturer}
                     placeholder="Manufacturer"
-                    onChange={(value) => setSelectedManufacturer(value)} 
+                    onChange={(value) => setSelectedManufacturer(value)}
                 />
-                <SelectModel 
-                    models={filteredModels} 
-                    selected={selectedModel} 
+                <SelectModel
+                    models={filteredModels}
+                    selected={selectedModel}
                     placeholder="Model"
-                    onChange={(value) => setSelectedModel(value)} 
+                    onChange={(value) => setSelectedModel(value)}
                 />
-                <SelectBodyType 
-                    bodyTypes={filteredBodyTypes} 
-                    selected={selectedBodyType} 
+                <SelectBodyType
+                    bodyTypes={filteredBodyTypes}
+                    selected={selectedBodyType}
                     placeholder="Body Type"
-                    onChange={(value) => setSelectedBodyType(value)} 
+                    onChange={(value) => setSelectedBodyType(value)}
                 />
-                <SelectColor 
-                    colors={filteredColors} 
-                    selected={selectedColor} 
+                <SelectColor
+                    colors={filteredColors}
+                    selected={selectedColor}
                     placeholder="Color"
-                    onChange={(value) => setSelectedColor(value)} 
+                    onChange={(value) => setSelectedColor(value)}
                 />
-                <SelectPrice 
-                    priceRange={priceRange} 
-                    onChange={(range) => setPriceRange(range)} 
+                <SelectPrice
+                    priceRange={priceRange}
+                    onChange={(range) => setPriceRange(range)}
                 />
-                <SelectMileage 
-                    selected={selectedMileage} 
-                    onChange={(value) => setSelectedMileage(value)} 
+                <SelectMileage
+                    selectedMileage={selectedMileage}
+                    onChange={(mileage) => setSelectedMileage(mileage)}
                 />
-                <SelectProductionYear 
-                    selected={selectedProductionYear} 
-                    onChange={(value) => setSelectedProductionYear(value)} 
+                <SelectProductionYear
+                    selectedYear={selectedProductionYear}
+                    onChange={(yearRange) => setSelectedProductionYear(yearRange)}
                 />
-                <SelectFuel 
-                    selected={selectedFuel} 
-                    onChange={(value) => setSelectedFuel(value)} 
+                <SelectFuel
+                    selectedFuel={selectedFuel}
+                    onChange={(value) => setSelectedFuel(value)}
                 />
-                <DeleteFiltersBtn onClick={resetFilters} />
             </div>
+            <DeleteFiltersBtn onClick={resetFilters} />
         </div>
     );
 }

@@ -10,44 +10,35 @@ import Vector from "../admin-upload-components/assets/Vector.png";
 import Group from "../admin-upload-components/assets/Group.png";
 
 function Admin() {
-  const { id } = useParams();
-  const navigate = useNavigate();
+  const { id } = useParams(); // Get the car's ID from URL params
+  const navigate = useNavigate(); // Navigation hook
 
-  const [carDetails, setCarDetails] = useState({});
+  // State variables for the car data
+  const [carDetails, setCarDetails] = useState({
+    name: "",
+    model: "",
+    year: "",
+    // Add other necessary fields for new car
+  });
   const [exteriorFeatures, setExteriorFeatures] = useState([]);
   const [interiorFeatures, setInteriorFeatures] = useState([]);
   const [price, setPrice] = useState("");
-  const [pictures, setPictures] = useState({
-    main: "",
-    others: [],
-  });
+  const [pictures, setPictures] = useState({ main: "", others: [] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     if (id) {
-      const savedCar = localStorage.getItem(`car_${id}`);
-      if (savedCar) {
-        const carData = JSON.parse(savedCar);
-        setCarDetails(carData);
-        setExteriorFeatures(carData.features?.exterior || []);
-        setInteriorFeatures(carData.features?.interior || []);
-        setPrice(carData.price || "");
-        setPictures({
-          main: carData.pictures?.main || "",
-          others: carData.pictures?.others || [],
-        });
-        setLoading(false);
-      } else {
-        fetchCarDetails();
-      }
+      fetchCarDetails(); // Fetch the car details if editing an existing car
     } else {
-      setLoading(false);
+      setLoading(false); // No loading needed for new car
     }
   }, [id]);
 
   const fetchCarDetails = () => {
     setLoading(true);
+    setError(null);
+
     fetch(`http://localhost:9990/cars/${id}`)
       .then((response) => {
         if (!response.ok) {
@@ -64,7 +55,6 @@ function Admin() {
           main: data.pictures?.main || "",
           others: data.pictures?.others || [],
         });
-        localStorage.setItem(`car_${id}`, JSON.stringify(data));
       })
       .catch((error) => {
         setError("Error fetching car details: " + error.message);
@@ -85,7 +75,7 @@ function Admin() {
       price,
     };
 
-    const method = id ? "PUT" : "POST";
+    const method = id ? "PUT" : "POST"; // Determine if it's an update or a new entry
     const url = id ? `http://localhost:9990/cars/${id}` : "http://localhost:9990/cars";
 
     fetch(url, {
@@ -96,18 +86,18 @@ function Admin() {
       body: JSON.stringify(carData),
     })
       .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
+        if (!response.ok) {
           throw new Error("Failed to publish the vehicle.");
         }
+        return response.json();
       })
       .then((data) => {
-        localStorage.setItem(`car_${id}`, JSON.stringify(data));
-        navigate("/admin/all");
+        // Store only essential information to avoid exceeding storage quota
+        localStorage.setItem(`car_${data.id}`, JSON.stringify({ id: data.id, name: data.name }));
+        navigate("/admin/all"); // Redirect to the car list after publishing
       })
       .catch((error) => {
-        setError("Error publishing vehicle: " + error.message);
+        setError("Error publishing vehicle: " + error.message); // Handle errors
       });
   };
 

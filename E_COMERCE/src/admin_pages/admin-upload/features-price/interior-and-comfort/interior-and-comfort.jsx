@@ -21,7 +21,7 @@ function InteriorAndComfort({ setInteriorFeatures, interiorFeatures }) {
   };
 
   return (
-    <div className="interior-and-comfort-div">
+    <div className="secondary-features-div">
       <h1>4: Interior and Comfort</h1>
       <hr />
       <input
@@ -30,15 +30,15 @@ function InteriorAndComfort({ setInteriorFeatures, interiorFeatures }) {
         onChange={(e) => setInputValue(e.target.value)}
         placeholder="Add feature"
       />
-      <button onClick={handleAddFeature}>Add</button>
-      <ul>
+      <button className="add-button" onClick={handleAddFeature}>+</button>
+      <span className="additional-info">
         {values.map((feature, index) => (
-          <li key={index}>
+          <p className="additional-info-p" key={index}>
             {feature}
-            <button onClick={() => handleRemoveFeature(index)}>Remove</button>
-          </li>
+            <button  className="additional-info-delete-btn" onClick={() => handleRemoveFeature(index)}>Remove</button>
+          </p>
         ))}
-      </ul>
+      </span>
     </div>
   );
 }

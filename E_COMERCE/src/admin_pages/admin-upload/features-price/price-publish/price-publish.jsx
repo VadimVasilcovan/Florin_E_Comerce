@@ -13,11 +13,11 @@ function PriceAndPublish({ setPrice, price, onPublish }) {
   };
 
   return (
-    <div className="price-and-publish-div">
+    <div className="secondary-features-div">
       <h1>5: Price and Publish</h1>
       <hr />
       <div className="price-div">
-        <label>Price</label>
+        
         <input
           type="number"
           value={inputValue}
@@ -27,6 +27,7 @@ function PriceAndPublish({ setPrice, price, onPublish }) {
           }}
           placeholder="Enter price"
         />
+        <label>Price</label>
       </div>
       <div className="publish-div">
         <button className="publish-btn" onClick={handlePublish}>

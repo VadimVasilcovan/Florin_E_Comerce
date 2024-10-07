@@ -13,3 +13,10 @@
 .admin-publish-div{
     width: 77.5rem;
 }
+
+.price-div{
+    display: flex;
+    flex-direction: column;
+    width: 10rem;
+}
+
