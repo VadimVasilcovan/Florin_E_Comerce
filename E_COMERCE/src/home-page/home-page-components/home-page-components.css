@@ -17,3 +17,36 @@
     width: 100%; /* Ensure full width */
 }
 
+@media (max-width:1200px){
+    .home-page {
+        width: 60rem;
+    }
+    .page-div {
+        display: flex;
+        flex-direction: column; /* Ensure content is stacked vertically */
+        align-items: start; /* Center the home-page content */
+        width: 100%;
+       padding: 1rem;
+    }
+  }
+  
+  @media (max-width: 992px){
+    .home-page {
+        width: 50rem;
+    }
+  }
+  
+  @media (max-width: 768px){
+    .home-page {
+        width: 45rem;
+    }
+   
+  }
+  
+  @media (max-width: 480px){
+   
+  }
+  
+  @media (max-width: 320px){
+    
+  }

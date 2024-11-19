@@ -79,3 +79,30 @@
     animation: spin 2s linear infinite; /* Spin animation */
 }
 
+
+
+@media (max-width: 1200px) {
+    .cars-card-holder-component {
+        gap: 1rem; 
+        
+    }
+
+ }
+ 
+ @media (max-width: 992px) {
+  
+ }
+ 
+ 
+ @media (max-width: 768px) {
+    
+ }
+ 
+ 
+ @media (max-width: 480px) {
+    
+ }
+ 
+ @media (max-width: 320px) {
+    
+ }

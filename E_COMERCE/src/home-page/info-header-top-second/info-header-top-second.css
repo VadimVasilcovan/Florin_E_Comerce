@@ -17,9 +17,7 @@
 }
 
 @media (max-width: 1200px) {
-   .info-Header-Top-Second {
-      padding: 0 4rem; 
-   }
+   
    .info-Header-Top-Second > *:first-child,
    .info-Header-Top-Second > *:last-child {
       margin: 0; 
@@ -30,9 +28,10 @@
 @media (max-width: 992px) {
    .info-Header-Top-Second {
       flex-direction: row;
-      align-items: flex-start;
-      gap: 1rem; 
+      
+     
       height: auto; 
+     
    }
    .info-Header-Top-Second > * {
       margin: 0; 
@@ -48,7 +47,7 @@
 @media (max-width: 480px) {
    .info-Header-Top-Second {
       flex-direction: row; 
-      align-items: stretch; 
+       
    }
    .info-Header-Top-Second > *:first-child,
    .info-Header-Top-Second > *:last-child {

@@ -32,6 +32,10 @@
 
 
 @media (max-width: 768px) {
+    .navbar-div {
+        width: 45rem; 
+
+    }
    
 }
 
