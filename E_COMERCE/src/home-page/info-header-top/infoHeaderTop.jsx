@@ -8,7 +8,9 @@ function InfoHeaderTop() {
   return (
     <div className='InfoHeaderTopCss'>
         <div className="top-content">
+          <div className='AFB-cars-div-navbar'>
             <AFBcars/>
+            </div>
             <div className='right-side-elements'>
             <PhoneNumber/>
             <LocationInfoHeader/>

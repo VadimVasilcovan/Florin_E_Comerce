@@ -1,33 +1,56 @@
 .footer-container {
-  background-color: #0F121F;
-  height: 25rem;
+  background-color: #0F121F; /* Dark background for the footer */
+  height: 25rem; /* Fixed height for larger screens */
   width: 100%; /* Ensure footer extends full width of page */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: flex; /* Flexbox for layout */
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center align items */
 }
 
 .footer-container span {
-  color: white;
+  color: white; /* Text color */
 }
 
 .footer-info-div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-top: 2rem;
-  margin-bottom: 6rem;
-  width: 77.5rem;
+  display: flex; /* Flexbox for layout */
+  flex-direction: row; /* Row layout for contact sections */
+  justify-content: space-between; /* Space items evenly */
+  padding-top: 2rem; /* Padding from top */
+  margin-bottom: 6rem; /* Bottom margin */
+  width: 77.5rem; /* Set a max width for larger screens */
 }
 
 .hr-footer {
-  width: 77.5rem; /* Ensure the <hr> spans the full width */
+  width: 77.5rem; /* Full width for the <hr> */
   border: none; /* Remove any default border */
-  border-top: 1px solid white; /* Add a top border with white color */
+  border-top: 1px solid white; /* Top border color */
   margin: 0; /* Reset margin */
 }
 
 .footer-bottom {
-  padding-top: 1rem;
+  padding-top: 1rem; /* Padding above the footer text */
+}
+
+/* Media query specifically for iPhone 14 Pro Max (up to 430px) */
+@media (max-width: 430px) {
+  .footer-container {
+      height: auto; /* Allow height to adjust based on content */
+      padding: 1rem; /* Add padding for small screens */
+  }
+
+  .footer-info-div {
+      flex-direction: column; /* Stack items vertically on small screens */
+      align-items: center; /* Center items */
+      margin-bottom: 2rem; /* Reduced margin for smaller screens */
+      width: 100%; /* Full width for container */
+  }
+
+  .hr-footer {
+      width: 100%; /* Full width for the <hr> */
+  }
   
+  .footer-bottom {
+      padding-top: 1rem; /* Maintain padding for footer text */
+      text-align: center; /* Center text for smaller screens */
+  }
 }

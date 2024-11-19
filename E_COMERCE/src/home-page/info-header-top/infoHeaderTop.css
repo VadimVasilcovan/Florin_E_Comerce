@@ -1,23 +1,47 @@
 .InfoHeaderTopCss {
-    display: flex;
-    flex-direction: column; /* Stack children vertically */
-    
+    display: flex; 
+    flex-direction: column; 
 }
 
 .top-content {
-    display: flex;
-    align-items: center;
-   justify-content: space-between;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
 }
-.right-side-elements{
-    display: flex;
+
+.right-side-elements {
+    display: flex; 
     flex-direction: row;
 }
-.right-side-elements>*:first-child{
+
+.right-side-elements > *:first-child {
     margin-right: 2rem;
 }
 
 .hr-container {
-    margin:  0; /* Add margin for spacing */
+    margin: 0; 
 }
 
+@media (min-width:1200px){
+    .top-content {
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between ; 
+    }
+}
+
+@media (min-width: 992px){
+
+}
+
+@media (min-width: 768px){
+
+}
+
+@media (min-width: 480px){
+
+}
+
+@media (min-width: 320px){
+
+}

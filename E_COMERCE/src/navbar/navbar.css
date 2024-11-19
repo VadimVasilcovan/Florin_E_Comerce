@@ -2,11 +2,45 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center; /* Add this line to center the navbar-div */
-    
+    justify-content: center; 
+    padding: 1rem; 
 }
 
 .navbar-div {
-    width: 77.5rem;
-    /* Any other styles you need for this div */
+    width: 77.5rem; 
+    max-width: 100%; 
+}
+
+
+@media (max-width: 1200px) {
+    .navbar-div {
+        width: 60rem;
+        
+    }
+    .navbar-container {
+        justify-content: flex-start;
+    }
+}
+
+
+@media (max-width: 992px) {
+    .navbar-div {
+        width: 50rem; 
+
+    }
+}
+
+
+@media (max-width: 768px) {
+   
+}
+
+
+@media (max-width: 480px) {
+    
+}
+
+
+@media (max-width: 320px) {
+   
 }

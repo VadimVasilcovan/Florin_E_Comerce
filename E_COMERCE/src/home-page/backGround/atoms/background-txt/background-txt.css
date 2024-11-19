@@ -1,14 +1,12 @@
 .background-txt {
-    width: 467px; /* Adjust width as needed */
-    height: 146px; /* Adjust height as needed */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: start; /* Center text horizontally */
-    position: absolute;
-    margin-top: 90px;
+  width: 467px; /* Default width */
+  height: 146px; /* Default height */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  display: flex; /* Flexbox for layout */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  text-align: start; /* Start alignment for text */
+  position: absolute; /* Positioned absolutely within the parent */
+  margin-top: 90px; /* Top margin */
+}
 
-  }
-  
- 

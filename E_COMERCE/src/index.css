@@ -28,6 +28,10 @@ span {
   overflow-x: hidden;
   margin: 0;
   margin-top: 1.5rem;
+
+  
+  
+  
  }
 
  hr {
@@ -38,6 +42,7 @@ span {
 
 body{
   background-color: #EEEFF2;
+  
 }
 
 
@@ -46,4 +51,43 @@ a{
   color: #EEEFF2;
 }
 
+@media (max-width:1200px){
+  body{
+    width: 100vh;
+    display: flex;
+    align-items: center;
+   }
 
+}
+
+@media (max-width: 992px){
+  body{
+    width: 100vh;
+    display: flex;
+    align-items: center;
+   }
+}
+
+@media (max-width: 768px){
+  body{
+    width: 100vh;
+    display: flex;
+    align-items: center;
+   }
+}
+
+@media (max-width: 480px){
+  body{
+    width: 100vh;
+    display: flex;
+    align-items: center;
+   }
+}
+
+@media (max-width: 320px){
+  body{
+    width: 100vh;
+    display: flex;
+    align-items: center;
+   }
+}
