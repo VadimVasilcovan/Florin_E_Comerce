@@ -31,7 +31,11 @@
 
 
 @media (max-width: 480px) {
-    
+  .backGroundimg {
+    width: 480px;
+    display: flex;
+    justify-content: center;
+}
 }
 
 
