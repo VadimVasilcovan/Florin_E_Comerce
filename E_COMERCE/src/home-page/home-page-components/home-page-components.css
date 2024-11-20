@@ -20,13 +20,14 @@
 @media (max-width:1200px){
     .home-page {
         width: 60rem;
+        padding: 1rem;
     }
     .page-div {
         display: flex;
         flex-direction: column; /* Ensure content is stacked vertically */
         align-items: start; /* Center the home-page content */
         width: 100%;
-       padding: 1rem;
+       
     }
   }
   
