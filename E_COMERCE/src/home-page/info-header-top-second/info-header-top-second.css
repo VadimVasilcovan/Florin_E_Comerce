@@ -1,60 +1,119 @@
+
 .info-Header-Top-Second {
    display: flex;
-   flex-direction: row; 
-   justify-content: space-between; 
-   align-items: center; 
-   padding: 1rem; 
-   width: 100%; 
-   box-sizing: border-box; 
+   align-items: center;
+   padding: 1rem;
+   width: 100%;
+   box-sizing: border-box;
+   position: relative;
 }
 
-.info-Header-Top-Second > *:first-child {
-   margin-left: 2rem; /
+/* Menu (buttons) */
+.menu {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   gap: 1rem; 
+   width: 60%; 
 }
 
-.info-Header-Top-Second > *:last-child {
-   margin-right: 2rem;
+
+.search-container {
+   margin-left: auto; 
 }
 
-@media (max-width: 1200px) {
+
+.burger-menu {
+   display: none; 
+   background: none;
+   border: none;
+   font-size: 1.5rem;
+   cursor: pointer;
+}
+
+
+@media (min-width: 992px) {
+   .info-Header-Top-Second {
+       flex-direction: row;
+       justify-content: space-between;
+   }
+
    
-   .info-Header-Top-Second > *:first-child,
-   .info-Header-Top-Second > *:last-child {
-      margin: 0; 
+   .menu {
+       display: flex;
+   }
+
+   
+   .search-container {
+       margin-left: auto;
    }
 }
 
 
 @media (max-width: 992px) {
    .info-Header-Top-Second {
-      flex-direction: row;
-      
-     
-      height: auto; 
-     
+       flex-direction: row;
+       justify-content: space-between;
    }
-   .info-Header-Top-Second > * {
-      margin: 0; 
-   }
-}
 
-
-@media (max-width: 768px) {
    
+   .menu {
+       display: none; 
+       flex-direction: column;
+       position: absolute;
+       top: 100%;
+       left: 0;
+       right: 0;
+       background-color: white;
+       padding: 1rem;
+       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+       gap: 1rem; 
+       width: 100%; 
+   }
+
+   .menu.show {
+       display: flex; 
+   }
+
+   
+   .burger-menu {
+       display: block; 
+       margin-right: 1rem;
+   }
+
+   
+   .search-container.left {
+       order: -1; 
+       margin-right: auto; 
+   }
 }
 
+@media (max-width: 768px){
+   .search-container {
+      margin-left: 0;
+      
+  }
+  .info-Header-Top-Second{
+   padding-left: 0px;
+   justify-content: start;
+  }
+
+  .burger-menu{
+
+  }
+}
 
 @media (max-width: 480px) {
-   .info-Header-Top-Second {
-      flex-direction: row; 
-       
+   .menu {
+       width: 100%; 
    }
-   .info-Header-Top-Second > *:first-child,
-   .info-Header-Top-Second > *:last-child {
-      margin: 0; 
+
+   .search-container {
+       margin-left: 0;
+       margin-top: 1rem;
    }
 }
 
 @media (max-width: 320px) {
-   
+  
 }
