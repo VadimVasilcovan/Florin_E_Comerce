@@ -10,3 +10,31 @@
   margin-top: 90px; /* Top margin */
 }
 
+
+
+
+@media (max-width:1200px){
+
+
+}
+
+@media (max-width: 992px){
+ 
+}
+
+@media (max-width: 768px){
+
+}
+
+@media (max-width: 480px){
+  .background-txt {
+    width: 400px; 
+  }
+  
+}
+
+@media (max-width: 320px){
+ 
+}
+
+
