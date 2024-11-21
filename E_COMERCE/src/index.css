@@ -78,9 +78,11 @@ a{
 
 @media (max-width: 480px){
   body{
-    width: 100vh;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     align-items: center;
+    
    }
 }
 
@@ -89,5 +91,11 @@ a{
     width: 100vh;
     display: flex;
     align-items: center;
+    
    }
+}
+
+
+* {
+  box-sizing: border-box; /* Includes padding and border in width/height */
 }
