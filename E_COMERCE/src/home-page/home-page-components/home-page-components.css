@@ -45,7 +45,15 @@
   }
   
   @media (max-width: 480px){
-   
+    .page-div {
+        width: 480px;
+    }
+
+    .home-page {
+        width:100%;
+        padding-left: 1rem;
+    }
+    
   }
   
   @media (max-width: 320px){

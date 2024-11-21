@@ -107,7 +107,25 @@
  
  
  @media (max-width: 480px) {
-    
+    .cars-card-holder-component {
+        display: flex;
+      flex-direction: column;
+      align-items: start;
+      
+      
+    }
+
+    .main-picture {
+        
+    }
+
+    .car-card {
+        
+    }
+    .cars-card-holder-component > * {
+       
+        max-width: 100% 
+    }
  }
  
  @media (max-width: 320px) {
