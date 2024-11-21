@@ -41,7 +41,9 @@
 
 
 @media (max-width: 480px) {
-    
+    .navbar-container {
+    width: 460px;
+    }
 }
 
 

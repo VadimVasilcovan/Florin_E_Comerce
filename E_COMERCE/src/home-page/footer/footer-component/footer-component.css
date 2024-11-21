@@ -31,26 +31,41 @@
   padding-top: 1rem; /* Padding above the footer text */
 }
 
-/* Media query specifically for iPhone 14 Pro Max (up to 430px) */
-@media (max-width: 430px) {
-  .footer-container {
-      height: auto; /* Allow height to adjust based on content */
-      padding: 1rem; /* Add padding for small screens */
-  }
 
-  .footer-info-div {
-      flex-direction: column; /* Stack items vertically on small screens */
-      align-items: center; /* Center items */
-      margin-bottom: 2rem; /* Reduced margin for smaller screens */
-      width: 100%; /* Full width for container */
-  }
-
-  .hr-footer {
-      width: 100%; /* Full width for the <hr> */
-  }
+@media (max-width: 1200px) {
   
-  .footer-bottom {
-      padding-top: 1rem; /* Maintain padding for footer text */
-      text-align: center; /* Center text for smaller screens */
-  }
+}
+
+
+@media (max-width: 992px) {
+  
+}
+
+
+@media (max-width: 768px) {
+ 
+}
+
+
+@media (max-width: 480px) {
+ .footer-container {
+  background-color: #0F121F; 
+  height: 25rem; 
+  width: 480px; 
+  justify-content: center;
+}
+
+.footer-info-div {
+  display: flex; /* Flexbox for layout */
+  flex-direction: column; /* Row layout for contact sections */
+  width: auto;
+ 
+ 
+ 
+}
+}
+
+
+@media (max-width: 320px) {
+ 
 }
