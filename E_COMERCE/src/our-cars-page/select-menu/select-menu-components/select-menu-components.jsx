@@ -9,6 +9,7 @@ import SelectMileage from "../atoms/mileage-select/mileage-select";
 import SelectProductionYear from "../atoms/production-year-select/production-year-select";
 import SelectFuel from "../atoms/fuel-select/fuel-select";
 import DeleteFiltersBtn from "../btn-delete-filtres/btn-delete-filtres";
+import MediaFilterBtn from "../filter-button-adaptive-media/filter-media-button";
 
 function SelectMenu({ cars, onFilterChange }) {
     const [selectedManufacturer, setSelectedManufacturer] = useState(null);
@@ -201,7 +202,9 @@ function SelectMenu({ cars, onFilterChange }) {
                 />
             </div>
             <DeleteFiltersBtn onClick={resetFilters} />
+            <MediaFilterBtn/>
         </div>
+
     );
 }
 

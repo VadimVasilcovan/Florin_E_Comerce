@@ -1,18 +1,49 @@
-.our-cars-div{
-    display: flex;
-    flex-direction: column; /* Ensure content is stacked vertically */
-    align-items: center; /* Center the home-page content */
-    width: 100%;
+@media (min-width: 1200px) {
+    .our-cars-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .our-cars-page {
+        width: 77.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .tittile-div {
+        width: 77.5rem;
+    }
+  }
+
+
+@media (max-width: 320px) and (max-width: 480px) and (max-width: 768px) and (max-width: 992px) and (max-width:1200px) {
+
+    .our-cars-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+  
+  }
+
+  
+  @media (max-width:1200px){
+
+  }
+  @media (max-width: 992px){
+
+  }
+  @media (max-width: 768px){
+
+  }
+  
+@media (max-width: 480px){
+
 }
+@media (max-width: 320px){
 
-.our-cars-page{
-    width: 77.5rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-
-.tittile-div{
-    width: 77.5rem;
 }

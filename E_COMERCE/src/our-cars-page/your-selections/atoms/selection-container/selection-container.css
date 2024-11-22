@@ -32,3 +32,27 @@
 .filter-item:last-child {
     margin-right: 0; /* Remove right margin from the last item */
 }
+
+@media (max-width:1200px){
+    .Selection-Container-div{
+        width: 59rem;
+        padding: 0rem;
+    }
+
+}
+@media (max-width: 992px){
+    .Selection-Container-div{
+        width: 49rem;
+        padding: 0rem;
+    }
+}
+@media (max-width: 768px){
+
+}
+
+@media (max-width: 480px){
+
+}
+@media (max-width: 320px){
+
+}

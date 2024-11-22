@@ -21,3 +21,24 @@
     margin-top: 1rem;
     margin-bottom: 1.2rem;
 } 
+
+@media (max-width:1200px){
+  .Need-div{
+ width: 60rem;
+  };
+}
+@media (max-width: 992px){
+    .Need-div{
+        width: 50rem;
+         };
+}
+@media (max-width: 768px){
+
+}
+
+@media (max-width: 480px){
+
+}
+@media (max-width: 320px){
+
+}

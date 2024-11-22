@@ -1,17 +1,54 @@
-.image-holder{
-    width: 100%;
-    height: 13rem;
-    object-fit: cover;
+
+
+@media (min-width: 1200px) {
+    .image-holder{
+        width: 100%;
+        height: 13rem;
+        object-fit: cover;
+        
+    }
     
-}
+    
+    
+    
+    .main-image{
+        width: 100%;
+        height: 100%;
+        display: block; /* Removes bottom margin/whitespace */
+        object-fit: cover; /* Maintain aspect ratio while fitting inside the container */
+        border-top-left-radius: 0.5rem;
+    }
+  }
 
 
+@media (min-width: 768px) and (max-width: 1199px) {
+    .image-holder{
+        width: 65%;
+        height: 9.3rem;
+        object-fit: cover;
+        
+    }
+    
+    
+    
+    
+    .main-image{
+        width: 100%;
+        height: 100%;
+        display: block; /* Removes bottom margin/whitespace */
+        object-fit: cover; /* Maintain aspect ratio while fitting inside the container */
+        border-top-left-radius: 0.5rem;
+    }
+    
+  }
 
+  @media (max-width: 767px) {
+    
+    .image-holder{
+        width: 65%;
+        height: 9.3rem;
+        object-fit: cover;
+        
+    }
 
-.main-image{
-    width: 100%;
-    height: 100%;
-    display: block; /* Removes bottom margin/whitespace */
-    object-fit: cover; /* Maintain aspect ratio while fitting inside the container */
-    border-top-left-radius: 0.5rem;
-}
+  }

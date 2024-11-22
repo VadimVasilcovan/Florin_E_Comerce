@@ -25,4 +25,29 @@
       border-color:#606361;;
       box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
     }
-   
+    @media (max-width:1200px){
+      .delete-btn-filters{
+        display: none;
+      }
+    }
+    @media (max-width: 992px){
+      .delete-btn-filters{
+        display: none;
+      }
+    }
+    @media (max-width: 768px){
+      .delete-btn-filters{
+        display: none;
+      }
+    }
+    
+  @media (max-width: 480px){
+    .delete-btn-filters{
+      display: none;
+    }
+  }
+  @media (max-width: 320px){
+    .delete-btn-filters{
+      display: none;
+    }
+  }

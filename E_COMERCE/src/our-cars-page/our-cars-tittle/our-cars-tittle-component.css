@@ -4,3 +4,16 @@ h1{
     margin-bottom: 0rem;
     margin-top: 0.5rem;
 }
+
+
+@media (max-width:1200px) {
+    .Our-cars-title-div{
+          width: 61rem;
+    }
+   
+}
+@media (max-width: 992px) {
+    .Our-cars-title-div{
+        width: 51rem;
+  }
+}
